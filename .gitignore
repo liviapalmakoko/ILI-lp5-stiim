@@ -1,0 +1,11 @@
+.DS_Store
+
+# Arquivos abertos de design (padrão das outras LPs)
+*.psd
+*.psb
+*.ai
+
+# Materiais brutos do cliente: 3,0 GB, com arquivos de até 962 MB.
+# O GitHub rejeita qualquer arquivo acima de 100 MB, então a pasta fica local.
+# Origem: Google Drive do cliente (KV oficial STIIM).
+materiais/STIIM_KVcliente/
