@@ -8,9 +8,9 @@ Landing page do **STIIM**, bioestimulador de Hidroxiapatita de Cálcio (CaHA) de
 HTML + CSS + JS puros, sem framework. Deploy como arquivos estáticos.
 
 ```
-index.html      estrutura, 10 seções
+index.html      estrutura, 7 blocos principais
 styles.css      tokens + layout
-script.js       reveal por scroll, carrossel, interações
+script.js       reveal por scroll, menu e formulário
 assets/fonts/   Gotham (6 cortes woff2)
 assets/img/     imagens da página (WebP), logos (SVG/PNG)
 materiais/      briefings, identidade visual, histórico e documentação
@@ -28,19 +28,15 @@ Precisa ser servido por HTTP. Abrir o `index.html` direto pelo `file://` faz o p
 
 ## Fundação de design
 
-Uma única variável acoplada ao viewport governa **toda** a tipografia e **todo** o espaçamento:
+A página segue uma gramática visual curta e repetível: fundo claro, amarelo como campo de destaque,
+painéis arredondados, produto, círculos e estruturas celulares. Os blocos usam uma grade de até
+`1180px`, três padrões de composição e espaçamento amplo. Não há seção azul/escura, tipografia
+gigante decorativa, colagem ou carrossel automático.
 
-```css
---u: clamp(13px, 1.111vw, 16px);   /* travada acima de 1440px */
-```
-
-Todo o resto deriva dela por razões fixas (`--fs-*`, `--sp-*`). O display tem razões próprias
-(`--r-h1`, `--r-h2`, `--r-big`) que caem nos breakpoints, porque título precisa encolher mais que
-corpo em tela estreita. Acima de 1440px a página para de crescer — é isso que garante que duas
-pessoas em telas diferentes vejam a mesma proporção.
-
-**Não adicionar `clamp()` avulso.** A primeira versão tinha mais de 30, cada um com acoplamento `vw`
-diferente, e era a causa do "pra ela a fonte fica pequena, pra mim grande".
+A referência visual oficial `identidade-produto.png` vem da pasta
+`02-referencias-imagem/identidade-marca`. As demais imagens editoriais e técnicas vêm do acervo
+aprovado do STIIM, com prioridade para `04-imagens-geradas`, e são convertidas para WebP antes de entrar na página. A pasta
+`01-referencia-video` e qualquer asset com fundo azul devem ser desconsiderados.
 
 ## Paleta e tipografia
 
@@ -49,10 +45,10 @@ Canva.
 
 | Papel | Valor |
 |---|---|
-| Fundo base | `#EFF0EF` — cinza claro **frio**, não bege |
-| Painel | `#F4F4F3` · Escuro `#13171B` |
-| Amarelos | família em degradê: `#FFCF29` `#EEC13E` `#FDB92A` `#FFD374` `#FBE06D` `#FBAE2D` |
-| Texto | `#231F20` / `#535657` · títulos em ouro `#D9A31B` |
+| Fundo base | `#EDEDEC` — cinza claro neutro |
+| Painéis | `#F8F8F6` e branco |
+| Amarelo principal | `#FFCA08` |
+| Texto | `#232323` / `#686868` · destaques em ouro escuro |
 
 Gotham: **Book 56% + Light 21% do texto da marca; Bold é 6%**. O display vai em Book, com Bold só
 nas palavras de ênfase.
