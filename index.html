@@ -12,7 +12,7 @@
 
   <link rel="preload" href="assets/fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/GOTHAM-BOLD.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="styles.css?v=20260804-27" />
+  <link rel="stylesheet" href="styles.css?v=20260805-42" />
 
   <script>window.__TRK__={brand:'ilikia',pixelId:'666277432116339',ga4Id:'',collect:'https://track-ilikia.koko.ag/collect'};</script>
   <noscript><img height="1" width="1" class="tracking-pixel" src="https://www.facebook.com/tr?id=666277432116339&amp;ev=PageView&amp;noscript=1" alt="" /></noscript>
@@ -24,7 +24,7 @@
     <a href="#inicio" class="brand" aria-label="ILIKIA STIIM — início">
       <img src="assets/img/logo-ilikia.svg" alt="ILIKIA" width="108" height="31" />
       <span aria-hidden="true"></span>
-      <img src="assets/img/logo-stiim-nav-dark.png" alt="STIIM" width="122" height="28" />
+      <img src="assets/img/logo-stiim-nav-dark.png" alt="STIIM" width="146" height="33" />
     </a>
     <nav class="main-nav" id="mainNav" aria-label="Navegação principal">
       <a href="#produto">Produto</a>
@@ -126,7 +126,13 @@
             <div class="benefit-group-copy benefit-card-back">
               <p class="benefit-kicker">Resultado natural</p>
               <ul>
-                <li><div><h3>Naturalidade</h3><p>Resultados progressivos, naturais e duradouros.</p></div></li>
+                <li class="naturality-story">
+                  <div>
+                    <h3>Naturalidade</h3>
+                    <p class="naturality-manifesto">Não parecer outra pessoa.<br /><strong>Parecer bem sendo você.</strong></p>
+                    <p class="naturality-context">Para um paciente mais informado, que escolhe cuidar da pele sem apagar suas características ou a passagem do tempo.</p>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
@@ -168,11 +174,57 @@
         <img src="assets/img/sem-stiim-clear.webp" alt="Microscopia de STIIM" width="600" height="600" loading="lazy" />
         <figcaption><strong>STIIM</strong><span>Treliça e poros tridimensionais</span></figcaption>
       </figure>
-      <div class="degradation-strip">
-        <div class="degradation-title"><span>Degradação</span><strong>Camada por camada</strong></div>
-        <p><b>Produto A</b><span>Geometria irregular, com degradação mais heterogênea e perda precoce de volume.</span></p>
-        <p><b>STIIM</b><span>Liberação gradual em camadas concêntricas, sustentando o estímulo por mais tempo.</span></p>
-        <p><b>Resultado</b><span>Depósito mais homogêneo e resposta biológica progressiva.</span></p>
+      <div class="particle-distribution reveal" data-particle-distribution data-active-series="stiim">
+        <div class="particle-distribution-copy">
+          <p class="eyebrow">Tecnologia de 3ª geração</p>
+          <h3>Regularidade também na distribuição</h3>
+          <p>Distribuição e degradação são etapas conectadas. Selecione uma curva para entender como a morfologia de cada produto influencia sua resposta no tecido.</p>
+          <p class="distribution-control-label">Comparar curvas</p>
+          <div class="distribution-legend" role="group" aria-label="Comparar curvas de distribuição">
+            <button type="button" data-distribution-series="stiim" aria-pressed="true"><i class="legend-stiim" aria-hidden="true"></i>STIIM · 25–45 µm</button>
+            <button type="button" data-distribution-series="product" aria-pressed="false"><i class="legend-product" aria-hidden="true"></i>Produto A</button>
+          </div>
+        </div>
+        <figure class="distribution-chart">
+          <svg viewBox="0 0 620 300" role="img" aria-labelledby="distribution-title distribution-desc">
+            <title id="distribution-title">Distribuição comparativa do tamanho das microesferas</title>
+            <desc id="distribution-desc">A curva de STIIM é mais estreita e concentrada entre 25 e 45 micrômetros; a curva do Produto A é mais dispersa.</desc>
+            <defs>
+              <linearGradient id="stiimChartFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#ffca08" stop-opacity=".55" />
+                <stop offset="100%" stop-color="#ffca08" stop-opacity=".03" />
+              </linearGradient>
+            </defs>
+            <g class="chart-grid" aria-hidden="true">
+              <line x1="54" y1="44" x2="586" y2="44" /><line x1="54" y1="100" x2="586" y2="100" />
+              <line x1="54" y1="156" x2="586" y2="156" /><line x1="54" y1="212" x2="586" y2="212" />
+            </g>
+            <rect class="chart-range" x="320" y="32" width="212" height="204" rx="18" />
+            <path class="chart-product-line" pathLength="1" d="M54 228 C112 226 142 214 188 176 S250 82 306 112 S386 202 452 218 S532 226 586 228" />
+            <path class="chart-stiim-area" d="M54 228 C248 228 282 222 320 190 S363 54 414 48 S482 158 532 208 S568 226 586 228 L586 236 L54 236 Z" />
+            <path class="chart-stiim-line" pathLength="1" d="M54 228 C248 228 282 222 320 190 S363 54 414 48 S482 158 532 208 S568 226 586 228" />
+            <path class="chart-hit chart-hit-product" tabindex="0" role="button" aria-label="Exibir detalhes do Produto A" aria-pressed="false" data-distribution-series="product" d="M54 228 C112 226 142 214 188 176 S250 82 306 112 S386 202 452 218 S532 226 586 228" />
+            <path class="chart-hit chart-hit-stiim" tabindex="0" role="button" aria-label="Exibir detalhes de STIIM" aria-pressed="true" data-distribution-series="stiim" d="M54 228 C248 228 282 222 320 190 S363 54 414 48 S482 158 532 208 S568 226 586 228" />
+            <line class="chart-axis" x1="54" y1="236" x2="586" y2="236" />
+            <g class="chart-labels" aria-hidden="true">
+              <text x="54" y="263">0</text><text x="160" y="263">10</text><text x="266" y="263">20</text>
+              <text x="372" y="263">30</text><text x="478" y="263">40</text><text x="584" y="263">50</text>
+              <text class="chart-unit" x="320" y="292">Tamanho de microesfera (µm)</text>
+            </g>
+          </svg>
+        </figure>
+        <div class="distribution-insight" aria-live="polite">
+          <article data-distribution-panel="stiim">
+            <p><span>STIIM</span><small>25–45 µm · distribuição uniforme</small></p>
+            <div><strong>Degradação camada por camada</strong><span>Liberação gradual em camadas concêntricas, sustentando o estímulo por mais tempo.</span></div>
+            <div><strong>Resposta</strong><span>Depósito mais homogêneo e resposta biológica progressiva.</span></div>
+          </article>
+          <article data-distribution-panel="product" hidden>
+            <p><span>Produto A</span><small>Distribuição mais ampla e irregular</small></p>
+            <div><strong>Degradação heterogênea</strong><span>Geometria irregular, semelhante a areia, com perda precoce de volume.</span></div>
+            <div><strong>Resposta</strong><span>Menor uniformidade na dispersão e no padrão de degradação.</span></div>
+          </article>
+        </div>
       </div>
     </div>
   </section>
@@ -210,7 +262,11 @@
           <h3>Longevidade</h3>
           <p>Regeneração profunda e modulação de marcadores associados à juventude biológica.<sup>1</sup></p>
           <ul class="step-points"><li>Proteção e homeostase celular</li><li>Metabolismo mitocondrial</li><li>Ativação de SIRT-1, SIRT-3 e FOXO3</li></ul>
-          <p class="mechanism-gene"><strong>SIRT-1 · SIRT-3 · FOXO3</strong><span>Proteção celular, metabolismo mitocondrial, homeostase e capacidade de reparo.</span></p>
+          <dl class="mechanism-gene" aria-label="Atuação dos marcadores associados à longevidade celular">
+            <div><dt>SIRT-1</dt><dd>Proteção celular e processos metabólicos</dd></div>
+            <div><dt>SIRT-3</dt><dd>Metabolismo mitocondrial e homeostase energética</dd></div>
+            <div><dt>FOXO3</dt><dd>Homeostase e modulação de processos inflamatórios</dd></div>
+          </dl>
         </article>
       </div>
     </div>
@@ -220,7 +276,7 @@
     <div class="container results-heading reveal">
       <p class="eyebrow"><span class="brand-dot"></span> Evidências científicas</p>
       <h2>Resultados que evoluem <em>com o tempo</em></h2>
-      <p>Produção equilibrada de colágeno tipo I e III, associada à restauração da matriz extracelular e à longevidade cutânea.</p>
+      <p>Produção equilibrada de colágeno tipo I e III, associada à restauração da matriz extracelular e à longevidade cutânea, sem caracterizar fibrose exacerbada.</p>
     </div>
     <div class="container evidence-timeline reveal" data-evidence-timeline>
       <div class="timeline-scroll">
@@ -266,7 +322,6 @@
         </section>
       </div>
     </div>
-    <p class="container gene-data reveal"><strong>Genes marcadores:</strong> SIRT-1 +26,9% · SIRT-3 +86,0% · FOXO3 +29,9%.</p>
     <div class="container results-action reveal">
       <p>Uma evolução que acompanha o tempo biológico da pele.</p>
       <a href="#contato" class="button button-light">Receber as evidências completas</a>
@@ -275,26 +330,66 @@
 
   <section class="section application" id="aplicacao">
     <div class="container application-grid">
-      <figure class="model-card reveal">
-        <img src="assets/img/aplicacao-modelo-gerada.webp" alt="Modelo em pé representando as áreas de aplicação corporal e facial" width="941" height="1672" loading="lazy" />
+      <figure class="model-card application-map reveal" data-application-map>
+        <img src="assets/img/aplicacao-rosto-frontal.webp" alt="Retrato frontal de paciente com as áreas de aplicação de STIIM indicadas" width="941" height="1672" loading="lazy" />
+        <button class="area-hotspot hotspot-label-left" type="button" style="--x:70%;--y:63%" data-application-index="2" aria-label="Contorno facial" aria-pressed="false"><span>03</span><b>Contorno facial</b></button>
+        <button class="area-hotspot hotspot-label-left" type="button" style="--x:67%;--y:49%" data-application-index="1" aria-label="Região malar" aria-pressed="false"><span>02</span><b>Região malar</b></button>
+        <button class="area-hotspot" type="button" style="--x:34%;--y:66%" data-application-index="3" aria-label="Mandíbula" aria-pressed="false"><span>04</span><b>Mandíbula</b></button>
+        <button class="area-hotspot is-active" type="button" style="--x:28%;--y:37%" data-application-index="0" aria-label="Têmporas" aria-pressed="true"><span>01</span><b>Têmporas</b></button>
+        <button class="area-hotspot hotspot-label-left" type="button" style="--x:52%;--y:83%" data-application-index="4" aria-label="Pescoço" aria-pressed="false"><span>05</span><b>Pescoço</b></button>
       </figure>
       <div class="application-copy reveal">
         <p class="eyebrow"><span class="brand-dot"></span> Aplicação e versatilidade</p>
         <h2>Um único produto, <em>múltiplas possibilidades</em></h2>
-        <p>Para pacientes jovens ou peles maduras, STIIM permite abordagens personalizadas de prevenção, correção e manutenção.</p>
-        <div class="area-list">
-          <div><span>01</span><p><strong>Contorno facial</strong>Redefinição do perímetro do rosto</p></div>
-          <div><span>02</span><p><strong>Região malar</strong>Projeção e sustentação do terço médio</p></div>
-          <div><span>03</span><p><strong>Mandíbula</strong>Definição do contorno mandibular e suporte estrutural</p></div>
-          <div><span>04</span><p><strong>Têmporas</strong>Restauração do volume temporal e transição do terço superior</p></div>
-          <div><span>05</span><p><strong>Pescoço</strong>Textura, firmeza e qualidade da pele</p></div>
-        </div>
-        <div class="application-note">
-          <strong>Estruturação · Bioestimulação · Textura · Longevidade</strong>
-          <span>Diferentes diluições, planos anatômicos e protocolos combinados com toxina, ácido hialurônico, fios e tecnologias.</span>
-          <span class="application-profile">Da prevenção em pacientes jovens à restauração e manutenção em peles maduras.</span>
+        <p>Para pacientes jovens ou peles maduras, STIIM permite abordagens personalizadas de prevenção, correção e manutenção, reunindo estruturação, bioestimulação, textura e longevidade em diferentes planos anatômicos. Quando indicado, também pode compor protocolos combinados com toxina botulínica, ácido hialurônico, fios e tecnologias.</p>
+        <div class="area-list" aria-label="Áreas de aplicação">
+          <button class="is-active" type="button" data-application-index="0" aria-pressed="true"><span>01</span><span class="area-copy"><strong>Têmporas</strong>Restauração do volume temporal e transição do terço superior</span></button>
+          <button type="button" data-application-index="1" aria-pressed="false"><span>02</span><span class="area-copy"><strong>Região malar</strong>Projeção e sustentação do terço médio</span></button>
+          <button type="button" data-application-index="2" aria-pressed="false"><span>03</span><span class="area-copy"><strong>Contorno facial</strong>Redefinição do perímetro do rosto</span></button>
+          <button type="button" data-application-index="3" aria-pressed="false"><span>04</span><span class="area-copy"><strong>Mandíbula</strong>Definição do contorno mandibular e suporte estrutural</span></button>
+          <button type="button" data-application-index="4" aria-pressed="false"><span>05</span><span class="area-copy"><strong>Pescoço</strong>Textura, firmeza e qualidade da pele</span></button>
         </div>
       </div>
+    </div>
+    <div class="container application-insights">
+      <article class="patient-profile reveal">
+        <p class="eyebrow"><span class="brand-dot"></span> Personalização do tratamento</p>
+        <h3>Naturalidade para diferentes <em>tempos da pele</em></h3>
+        <p>De pacientes jovens a peles maduras, STIIM acompanha estratégias de prevenção, restauração e manutenção com diluições personalizadas para cada objetivo, sem abrir mão da qualidade da pele.</p>
+        <strong class="patient-profile-pillars">Prevenção · Restauração · Manutenção</strong>
+      </article>
+      <div class="concentration-panel reveal">
+        <div class="concentration-slider" data-concentration-slider style="--split:50%" role="group" aria-label="Comparador visual de concentrações">
+          <div class="concentration-slider-layer concentration-slider-low" aria-hidden="true"><img src="assets/img/espectro-concentracao-stiim.jpg" alt="" width="1774" height="887" loading="lazy" /></div>
+          <div class="concentration-slider-layer concentration-slider-high" aria-hidden="true"><img src="assets/img/espectro-concentracao-stiim.jpg" alt="" width="1774" height="887" loading="lazy" /></div>
+          <div class="concentration-slider-handle" aria-hidden="true"><span>↔</span></div>
+          <input type="range" min="10" max="90" value="50" aria-label="Arraste para comparar maior e menor concentração" />
+        </div>
+        <div class="concentration-details">
+          <article>
+            <span>Volume + bioestímulo</span>
+            <strong>Maior concentração</strong>
+            <p>Para objetivos que combinam efeito de volume e bioestímulo.</p>
+          </article>
+          <article>
+            <span>Bioestímulo</span>
+            <strong>Menor concentração</strong>
+            <p>Para objetivos direcionados ao bioestímulo, em uma abordagem mais leve.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section longevity-closing" id="longevidade">
+    <img class="longevity-background" src="assets/img/produto-macro-longevidade-wide-v2.jpg" alt="" width="1672" height="941" loading="lazy" />
+    <div class="longevity-shade" aria-hidden="true"></div>
+    <div class="container longevity-closing-inner reveal">
+      <p class="eyebrow"><span class="brand-dot"></span> A escolha para quem busca</p>
+      <h2>Longevidade <em>da pele</em></h2>
+      <blockquote>“STIIM atua na estrutura da pele, promovendo qualidade, firmeza e longevidade cutânea.”</blockquote>
+      <p>Mais do que tratar sinais do envelhecimento, STIIM atua nos marcadores biológicos da pele para entregar resultados progressivos, naturais e duradouros.</p>
+      <a href="#contato" class="button">Falar com a ILIKIA</a>
     </div>
   </section>
 
@@ -319,11 +414,11 @@
             <h3>Solicite seu acesso</h3>
             <p>Receba o conteúdo técnico e fale com a equipe responsável.</p>
           </div>
-          <div class="field"><label for="nome">Nome completo *</label><input id="nome" name="nome" type="text" required autocomplete="name" placeholder="Seu nome" /></div>
-          <div class="field"><label for="email">E-mail *</label><input id="email" name="email" type="email" required autocomplete="email" placeholder="voce@clinica.com" /></div>
+          <div class="field"><label for="nome">Nome completo *</label><input id="nome" name="nome" type="text" required autocomplete="name" /></div>
+          <div class="field"><label for="email">E-mail *</label><input id="email" name="email" type="email" required autocomplete="email" /></div>
           <div class="field-row">
-            <div class="field"><label for="tel">Celular / WhatsApp *</label><input id="tel" name="telefone" type="tel" required autocomplete="tel" placeholder="(00) 00000-0000" /></div>
-            <div class="field"><label for="doc">CPF / CNPJ</label><input id="doc" name="cpf_cnpj" type="text" inputmode="numeric" placeholder="000.000.000-00" /></div>
+            <div class="field"><label for="tel">Celular / WhatsApp *</label><input id="tel" name="telefone" type="tel" required autocomplete="tel" /></div>
+            <div class="field"><label for="doc">CPF / CNPJ</label><input id="doc" name="cpf_cnpj" type="text" inputmode="numeric" /></div>
           </div>
           <div class="field-row">
             <div class="field"><label for="reg">Número do registro *</label><input id="reg" name="registro" type="text" required /></div>
@@ -354,7 +449,7 @@
       <a href="#inicio" class="brand footer-lockup" aria-label="ILIKIA STIIM — início">
         <img src="assets/img/logo-ilikia.svg" alt="ILIKIA" width="108" height="31" />
         <span aria-hidden="true"></span>
-        <img src="assets/img/logo-stiim-nav-dark.png" alt="STIIM" width="122" height="28" />
+        <img src="assets/img/logo-stiim-nav-dark.png" alt="STIIM" width="146" height="33" />
       </a>
       <p>Ciência aplicada à bioestimulação, regeneração tecidual e longevidade da pele.</p>
       <span class="footer-audience">Conteúdo exclusivo para profissionais habilitados.</span>
@@ -392,6 +487,6 @@
   <div><button type="button" class="cookie-reject" id="cookieReject">Recusar</button><button type="button" class="cookie-accept" id="cookieAccept">Entendi</button></div>
 </div>
 
-<script src="script.js?v=20260804-07"></script>
+<script src="script.js?v=20260805-16"></script>
 </body>
 </html>

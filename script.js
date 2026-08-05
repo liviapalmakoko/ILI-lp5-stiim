@@ -135,6 +135,132 @@
     startMechanismAutoplay();
   }
 
+  /* Curvas interativas de distribuição e degradação. */
+  var particleDistribution = document.querySelector('[data-particle-distribution]');
+
+  if (particleDistribution) {
+    var distributionTriggers = Array.prototype.slice.call(particleDistribution.querySelectorAll('[data-distribution-series]'));
+    var distributionPanels = Array.prototype.slice.call(particleDistribution.querySelectorAll('[data-distribution-panel]'));
+
+    function activateDistribution(series) {
+      particleDistribution.setAttribute('data-active-series', series);
+
+      distributionTriggers.forEach(function (trigger) {
+        trigger.setAttribute('aria-pressed', trigger.getAttribute('data-distribution-series') === series ? 'true' : 'false');
+      });
+
+      distributionPanels.forEach(function (panel) {
+        panel.hidden = panel.getAttribute('data-distribution-panel') !== series;
+      });
+    }
+
+    distributionTriggers.forEach(function (trigger) {
+      trigger.addEventListener('mouseenter', function () {
+        activateDistribution(trigger.getAttribute('data-distribution-series'));
+      });
+      trigger.addEventListener('click', function () {
+        activateDistribution(trigger.getAttribute('data-distribution-series'));
+      });
+
+      if (trigger.tagName.toLowerCase() !== 'button') {
+        trigger.addEventListener('focus', function () {
+          activateDistribution(trigger.getAttribute('data-distribution-series'));
+        });
+        trigger.addEventListener('keydown', function (event) {
+          if (event.key !== 'Enter' && event.key !== ' ') return;
+          event.preventDefault();
+          activateDistribution(trigger.getAttribute('data-distribution-series'));
+        });
+      }
+    });
+
+    activateDistribution('stiim');
+  }
+
+  /* Pontos anatômicos sincronizados com as áreas de aplicação. */
+  var applicationMap = document.querySelector('[data-application-map]');
+
+  if (applicationMap) {
+    var applicationSection = applicationMap.closest('.application');
+    var applicationTriggers = Array.prototype.slice.call(applicationSection.querySelectorAll('[data-application-index]'));
+
+    function activateApplication(index) {
+      applicationTriggers.forEach(function (trigger) {
+        var active = Number(trigger.getAttribute('data-application-index')) === index;
+        trigger.classList.toggle('is-active', active);
+        trigger.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+    }
+
+    applicationTriggers.forEach(function (trigger) {
+      var index = Number(trigger.getAttribute('data-application-index'));
+      trigger.addEventListener('mouseenter', function () { activateApplication(index); });
+      trigger.addEventListener('focus', function () { activateApplication(index); });
+      trigger.addEventListener('click', function () { activateApplication(index); });
+    });
+
+    activateApplication(0);
+  }
+
+  /* Comparador de concentração: arraste, toque ou setas do teclado. */
+  document.querySelectorAll('[data-concentration-slider]').forEach(function (slider) {
+    var input = slider.querySelector('input[type="range"]');
+    var resetFrame = null;
+    var currentValue = Number(input ? input.value : 50);
+    if (!input) return;
+
+    function updateConcentrationSlider(value) {
+      currentValue = typeof value === 'number' ? value : Number(input.value);
+      slider.style.setProperty('--split', currentValue + '%');
+      input.setAttribute('aria-valuetext', currentValue < 40 ? 'Predomínio da menor concentração' : currentValue > 60 ? 'Predomínio da maior concentração' : 'Comparação equilibrada');
+    }
+
+    function cancelConcentrationReset() {
+      window.cancelAnimationFrame(resetFrame);
+      resetFrame = null;
+    }
+
+    function returnConcentrationToCenter() {
+      var startValue = currentValue;
+      if (startValue === 50) return;
+
+      if (reduceMotion) {
+        input.value = '50';
+        updateConcentrationSlider();
+        return;
+      }
+
+      var startedAt = performance.now();
+      var duration = 1900;
+
+      function animate(now) {
+        var progress = Math.min((now - startedAt) / duration, 1);
+        var easedProgress = progress * progress * (3 - 2 * progress);
+        updateConcentrationSlider(startValue + (50 - startValue) * easedProgress);
+
+        if (progress < 1) resetFrame = window.requestAnimationFrame(animate);
+        else {
+          input.value = '50';
+          updateConcentrationSlider();
+          resetFrame = null;
+        }
+      }
+
+      resetFrame = window.requestAnimationFrame(animate);
+    }
+
+    input.addEventListener('pointerdown', function () {
+      cancelConcentrationReset();
+      input.value = String(currentValue);
+    });
+    input.addEventListener('input', function () {
+      cancelConcentrationReset();
+      updateConcentrationSlider();
+    });
+    input.addEventListener('change', returnConcentrationToCenter);
+    updateConcentrationSlider();
+  });
+
   /* Evidências organizadas por marcos cronológicos. */
   var evidenceTimeline = document.querySelector('[data-evidence-timeline]');
 
