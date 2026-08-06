@@ -63,6 +63,9 @@
   if (mechanismExpansion) {
     var mechanismTabs = Array.prototype.slice.call(mechanismExpansion.querySelectorAll('[role="tab"]'));
     var mechanismPanels = Array.prototype.slice.call(mechanismExpansion.querySelectorAll('[role="tabpanel"]'));
+    var mechanismTabsContainer = mechanismExpansion.querySelector('.mechanism-glass-tabs');
+    var mechanismDetails = mechanismExpansion.querySelector('.mechanism-details');
+    var mechanismMobileQuery = window.matchMedia('(max-width: 520px)');
     var mechanismTimer = null;
     var mechanismAutoplayAllowed = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -71,6 +74,8 @@
         var active = Number(tab.getAttribute('data-mechanism-index')) === index;
         tab.setAttribute('aria-selected', active ? 'true' : 'false');
         tab.setAttribute('tabindex', active ? '0' : '-1');
+        if (mechanismMobileQuery.matches) tab.setAttribute('aria-expanded', active ? 'true' : 'false');
+        else tab.removeAttribute('aria-expanded');
       });
 
       mechanismPanels.forEach(function (panel) {
@@ -92,7 +97,7 @@
 
     function startMechanismAutoplay() {
       stopMechanismAutoplay();
-      if (!mechanismAutoplayAllowed || document.hidden) return;
+      if (!mechanismAutoplayAllowed || mechanismMobileQuery.matches || document.hidden) return;
 
       mechanismTimer = window.setInterval(function () {
         var activeTab = mechanismTabs.find(function (tab) {
@@ -101,6 +106,28 @@
         var activeIndex = activeTab ? Number(activeTab.getAttribute('data-mechanism-index')) : 0;
         activateMechanism((activeIndex + 1) % mechanismTabs.length, false);
       }, 4200);
+    }
+
+    function syncMechanismLayout() {
+      var activeTab = mechanismTabs.find(function (tab) {
+        return tab.getAttribute('aria-selected') === 'true';
+      });
+      var activeIndex = activeTab ? Number(activeTab.getAttribute('data-mechanism-index')) : 0;
+
+      if (mechanismMobileQuery.matches && mechanismTabsContainer) {
+        mechanismPanels.forEach(function (panel, index) {
+          mechanismTabs[index].insertAdjacentElement('afterend', panel);
+          panel.classList.add('mechanism-mobile-panel');
+        });
+      } else if (mechanismDetails) {
+        mechanismPanels.forEach(function (panel) {
+          mechanismDetails.appendChild(panel);
+          panel.classList.remove('mechanism-mobile-panel');
+        });
+      }
+
+      activateMechanism(activeIndex, false);
+      startMechanismAutoplay();
     }
 
     mechanismTabs.forEach(function (tab) {
@@ -132,7 +159,13 @@
       else startMechanismAutoplay();
     });
 
-    startMechanismAutoplay();
+    if (typeof mechanismMobileQuery.addEventListener === 'function') {
+      mechanismMobileQuery.addEventListener('change', syncMechanismLayout);
+    } else if (typeof mechanismMobileQuery.addListener === 'function') {
+      mechanismMobileQuery.addListener(syncMechanismLayout);
+    }
+
+    syncMechanismLayout();
   }
 
   /* Curvas interativas de distribuição e degradação. */
@@ -268,9 +301,32 @@
     var timelineTabs = Array.prototype.slice.call(evidenceTimeline.querySelectorAll('[role="tab"]'));
     var timelinePanels = Array.prototype.slice.call(evidenceTimeline.querySelectorAll('[role="tabpanel"]'));
     var timelineMilestones = Array.prototype.slice.call(evidenceTimeline.querySelectorAll('.timeline-milestone'));
+    var timelineNav = evidenceTimeline.querySelector('.timeline-nav');
+    var timelineStage = evidenceTimeline.querySelector('.timeline-stage');
+    var timelineMobileQuery = window.matchMedia('(max-width: 520px)');
 
-    function activateTimeline(index, moveFocus) {
-      var timelineNav = evidenceTimeline.querySelector('.timeline-nav');
+    function expandTimelinePanel(index) {
+      var tab = timelineTabs[index];
+      var panel = timelinePanels[index];
+      if (!tab || !panel) return;
+
+      var activePosition = Number(tab.getAttribute('data-timeline-position'));
+      timelineNav.style.setProperty('--timeline-index', activePosition);
+      timelineTabs.forEach(function (item, itemIndex) {
+        item.setAttribute('aria-selected', itemIndex === index ? 'true' : 'false');
+        item.setAttribute('tabindex', itemIndex === index ? '0' : '-1');
+        item.classList.toggle('is-past', Number(item.getAttribute('data-timeline-position')) < activePosition);
+      });
+      timelineMilestones.forEach(function (milestone) {
+        milestone.classList.toggle('is-reached', Number(milestone.getAttribute('data-timeline-position')) < activePosition);
+      });
+
+      tab.setAttribute('aria-expanded', 'true');
+      panel.hidden = false;
+      panel.classList.add('is-active');
+    }
+
+    function activateTimeline(index, moveFocus, skipScroll) {
       var activePosition = Number(timelineTabs[index].getAttribute('data-timeline-position'));
       timelineNav.style.setProperty('--timeline-index', activePosition);
 
@@ -278,6 +334,8 @@
         var active = tabIndex === index;
         tab.setAttribute('aria-selected', active ? 'true' : 'false');
         tab.setAttribute('tabindex', active ? '0' : '-1');
+        if (timelineMobileQuery.matches) tab.setAttribute('aria-expanded', active ? 'true' : 'false');
+        else tab.removeAttribute('aria-expanded');
         tab.classList.toggle('is-past', Number(tab.getAttribute('data-timeline-position')) < activePosition);
       });
 
@@ -292,11 +350,35 @@
       });
 
       if (moveFocus) timelineTabs[index].focus();
-      timelineTabs[index].scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'nearest', inline: 'center' });
+      if (!skipScroll) timelineTabs[index].scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'nearest', inline: 'center' });
+    }
+
+    function syncTimelineLayout() {
+      var activeTab = timelineTabs.find(function (tab) {
+        return tab.getAttribute('aria-selected') === 'true';
+      });
+      var activeIndex = activeTab ? timelineTabs.indexOf(activeTab) : 0;
+
+      if (timelineMobileQuery.matches && timelineNav) {
+        timelinePanels.forEach(function (panel, index) {
+          timelineTabs[index].insertAdjacentElement('afterend', panel);
+          panel.classList.add('timeline-mobile-panel');
+        });
+      } else if (timelineStage) {
+        timelinePanels.forEach(function (panel) {
+          timelineStage.appendChild(panel);
+          panel.classList.remove('timeline-mobile-panel');
+        });
+      }
+
+      activateTimeline(activeIndex, false, true);
     }
 
     timelineTabs.forEach(function (tab, index) {
-      tab.addEventListener('click', function () { activateTimeline(index, false); });
+      tab.addEventListener('click', function () {
+        if (timelineMobileQuery.matches) expandTimelinePanel(index);
+        else activateTimeline(index, false);
+      });
       tab.addEventListener('keydown', function (event) {
         var targetIndex = index;
         if (event.key === 'ArrowRight') targetIndex = (index + 1) % timelineTabs.length;
@@ -306,9 +388,32 @@
         else return;
 
         event.preventDefault();
-        activateTimeline(targetIndex, true);
+        if (timelineMobileQuery.matches) {
+          expandTimelinePanel(targetIndex);
+          timelineTabs[targetIndex].focus();
+        } else activateTimeline(targetIndex, true);
       });
     });
+
+    var timelineRevealObserver = 'IntersectionObserver' in window ? new IntersectionObserver(function (entries) {
+      if (!timelineMobileQuery.matches) return;
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        expandTimelinePanel(timelineTabs.indexOf(entry.target));
+      });
+    }, { rootMargin: '-18% 0px -58% 0px', threshold: 0.15 }) : null;
+
+    if (timelineRevealObserver) {
+      timelineTabs.forEach(function (tab) { timelineRevealObserver.observe(tab); });
+    }
+
+    if (typeof timelineMobileQuery.addEventListener === 'function') {
+      timelineMobileQuery.addEventListener('change', syncTimelineLayout);
+    } else if (typeof timelineMobileQuery.addListener === 'function') {
+      timelineMobileQuery.addListener(syncTimelineLayout);
+    }
+
+    syncTimelineLayout();
   }
 
   /* UTMs persistem por 30 dias. */
@@ -464,6 +569,30 @@
     document.querySelectorAll('[data-cookie-prefs]').forEach(function (button) {
       button.addEventListener('click', showBanner);
     });
+  })();
+
+  /* Barra mobile que aciona o popup de WhatsApp injetado pelo RD Station. */
+  (function () {
+    var mobileWhatsappBar = document.getElementById('mobileWhatsappBar');
+    if (!mobileWhatsappBar || !('MutationObserver' in window)) return;
+
+    function syncMobileWhatsappBar() {
+      var rdButton = document.getElementById('rd-floating_button-ljq2ejnm');
+      var rdWrapper = rdButton ? rdButton.closest('.floating-button') : null;
+      var popupClosed = Boolean(rdWrapper && rdWrapper.classList.contains('floating-button--close'));
+
+      document.documentElement.classList.toggle('rd-mobile-bar-ready', Boolean(rdButton));
+      mobileWhatsappBar.hidden = !popupClosed;
+    }
+
+    mobileWhatsappBar.addEventListener('click', function () {
+      var rdButton = document.getElementById('rd-floating_button-ljq2ejnm');
+      if (rdButton) rdButton.click();
+    });
+
+    var whatsappObserver = new MutationObserver(syncMobileWhatsappBar);
+    whatsappObserver.observe(document.documentElement, { childList: true, subtree: true, attributes: true, attributeFilter: ['class'] });
+    syncMobileWhatsappBar();
   })();
 
   var year = document.getElementById('year');
