@@ -304,6 +304,7 @@
     var timelineNav = evidenceTimeline.querySelector('.timeline-nav');
     var timelineStage = evidenceTimeline.querySelector('.timeline-stage');
     var timelineMobileQuery = window.matchMedia('(max-width: 520px)');
+    var timelineHoverQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
 
     function expandTimelinePanel(index) {
       var tab = timelineTabs[index];
@@ -375,6 +376,9 @@
     }
 
     timelineTabs.forEach(function (tab, index) {
+      tab.addEventListener('mouseenter', function () {
+        if (timelineHoverQuery.matches && !timelineMobileQuery.matches) activateTimeline(index, false);
+      });
       tab.addEventListener('click', function () {
         if (timelineMobileQuery.matches) expandTimelinePanel(index);
         else activateTimeline(index, false);
