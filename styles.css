@@ -73,15 +73,17 @@ p{margin-bottom:20px}
 .menu-button span{display:block;width:100%;height:2px;margin:5px 0;background:#222;transition:transform .25s,opacity .25s}
 
 /* Hero */
-.hero{position:relative;display:flex;height:min(94svh,880px);min-height:720px;flex-direction:column;padding:78px 0 0;overflow:hidden;background:#efefed}
-.hero-background{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;object-position:center 42%}
-.hero-shade{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(245,245,243,.98) 0%,rgba(245,245,243,.9) 29%,rgba(245,245,243,.32) 43%,transparent 54%)}
+.hero{position:relative;display:flex;height:min(94svh,880px);min-height:720px;flex-direction:column;padding:78px 0 0;overflow:hidden;background:radial-gradient(circle at 79% 37%,rgba(255,222,94,.48) 0,rgba(255,232,145,.2) 20%,transparent 43%),linear-gradient(112deg,#f4f3ef 0%,#ecebe6 52%,#e7e4da 100%)}
+.hero::before{position:absolute;top:15%;right:5%;z-index:0;width:clamp(420px,42vw,660px);height:clamp(420px,42vw,660px);border:1px solid rgba(188,140,0,.12);border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.68) 0%,rgba(255,230,133,.2) 44%,transparent 70%);content:"";filter:blur(1px)}
+.hero-shade{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(245,245,243,.96) 0%,rgba(245,245,243,.86) 34%,rgba(245,245,243,.18) 51%,transparent 63%)}
 .hero-molecules{position:absolute;z-index:2;width:clamp(360px,38vw,620px);pointer-events:none;will-change:transform}
 .hero-molecules img{display:block;width:100%;height:auto}
 .hero-molecules-left{top:5%;left:-14%;opacity:.3;animation:hero-molecules-left 8.5s ease-in-out infinite alternate;-webkit-mask-image:linear-gradient(90deg,#000 42%,rgba(0,0,0,.58) 70%,transparent 100%);mask-image:linear-gradient(90deg,#000 42%,rgba(0,0,0,.58) 70%,transparent 100%)}
 .hero-molecules-left img{transform:scaleX(-1) rotate(-7deg)}
 .hero-molecules-right{top:1%;right:-12%;opacity:.58;animation:hero-molecules-right 7.5s ease-in-out infinite alternate;-webkit-mask-image:linear-gradient(270deg,#000 45%,rgba(0,0,0,.65) 72%,transparent 100%);mask-image:linear-gradient(270deg,#000 45%,rgba(0,0,0,.65) 72%,transparent 100%)}
 .hero-molecules-right img{transform:rotate(8deg)}
+.hero-product{position:absolute;right:max(1vw,calc((100vw - 1320px)/2));bottom:72px;z-index:2;width:clamp(500px,45vw,700px);pointer-events:none;animation:hero-product-float 7s ease-in-out infinite alternate;filter:drop-shadow(0 34px 28px rgba(83,62,0,.18))}
+.hero-product img{width:100%;height:auto}
 .hero-grid{position:relative;z-index:3;display:flex;min-height:0;flex:1;align-items:center;padding-bottom:108px}
 .hero-copy{max-width:640px;padding:34px 0}
 .hero h1{color:var(--ink);text-shadow:none}
@@ -98,12 +100,15 @@ p{margin-bottom:20px}
 .benefit-strip span{color:var(--muted);font-size:14px}
 
 @media (min-width:781px){
-  .hero-background{object-fit:contain;object-position:center 42%;background:#efefed}
+  .hero{height:min(100svh,980px);min-height:800px}
+  .hero-grid{align-items:flex-start;padding-top:clamp(90px,10vh,120px);padding-bottom:155px}
+  .hero-product{right:max(1vw,calc((100vw - 1320px)/2));bottom:165px;width:clamp(480px,43vw,650px)}
 }
 
 @media (min-width:781px) and (max-height:850px){
-  .hero{height:100svh;min-height:680px}
-  .hero-grid{padding-bottom:96px}
+  .hero{height:100svh;min-height:720px}
+  .hero-product{bottom:142px;width:clamp(420px,39vw,560px)}
+  .hero-grid{padding-top:clamp(68px,8vh,88px);padding-bottom:132px}
   .hero-copy{padding:20px 0}
   .hero h1{margin-bottom:20px;font-size:clamp(48px,5vw,64px)}
   .hero-lead{max-width:540px;margin-bottom:24px;font-size:18px}
@@ -431,6 +436,7 @@ p{margin-bottom:20px}
 .reveal.is-visible{opacity:1;transform:none}
 @keyframes hero-molecules-left{from{transform:translate3d(-20px,24px,0) rotate(-3deg)}to{transform:translate3d(30px,-30px,0) rotate(4deg)}}
 @keyframes hero-molecules-right{from{transform:translate3d(24px,-20px,0) rotate(3deg)}to{transform:translate3d(-30px,32px,0) rotate(-4deg)}}
+@keyframes hero-product-float{from{transform:translate3d(0,7px,0) rotate(-.5deg)}to{transform:translate3d(0,-9px,0) rotate(.5deg)}}
 
 /* Hover language — mouse and trackpad only */
 @media (hover:hover) and (pointer:fine){
@@ -545,11 +551,12 @@ p{margin-bottom:20px}
   .menu-button.is-open span:first-child{transform:translateY(3.5px) rotate(45deg)}
   .menu-button.is-open span:last-child{transform:translateY(-3.5px) rotate(-45deg)}
   .hero{height:auto;min-height:700px;padding-top:68px}
-  .hero-background{object-position:68% 42%}
-  .hero-shade{background:linear-gradient(90deg,rgba(245,245,243,.48) 0%,rgba(245,245,243,.12) 58%,transparent 82%),linear-gradient(0deg,rgba(245,245,243,.98) 0%,rgba(245,245,243,.94) 42%,rgba(245,245,243,.42) 68%,transparent 86%)}
+  .hero::before{top:4%;right:-18%;width:min(94vw,600px);height:min(94vw,600px)}
+  .hero-shade{background:linear-gradient(0deg,rgba(245,245,243,.98) 0%,rgba(245,245,243,.9) 44%,rgba(245,245,243,.18) 72%,transparent 91%)}
   .hero-molecules{width:min(76vw,470px)}
   .hero-molecules-left{top:10%;left:-45%;opacity:.2}
   .hero-molecules-right{top:4%;right:-39%;opacity:.42}
+  .hero-product{top:74px;right:2vw;bottom:auto;width:min(72vw,480px);filter:drop-shadow(0 24px 22px rgba(83,62,0,.18))}
   .hero-grid{min-height:632px;align-items:flex-end;padding-bottom:92px}
   .hero-copy{max-width:560px;padding:48px 0 26px}
   h1{font-size:clamp(40px,10.5vw,54px)}
@@ -651,12 +658,13 @@ p{margin-bottom:20px}
 
 @media (max-width:520px){
   .hero{display:block;min-height:0;padding-top:68px;overflow:hidden}
-  .hero-background{top:68px;bottom:auto;height:min(76vw,360px);object-fit:cover;object-position:66% 42%;-webkit-mask-image:linear-gradient(180deg,#000 0%,#000 72%,rgba(0,0,0,.76) 83%,transparent 100%);mask-image:linear-gradient(180deg,#000 0%,#000 72%,rgba(0,0,0,.76) 83%,transparent 100%)}
-  .hero-shade{top:68px;bottom:auto;height:min(76vw,360px);background:linear-gradient(90deg,rgba(245,245,243,.28),transparent 46%,rgba(255,226,151,.1))}
+  .hero::before{top:74px;right:-25%;width:104vw;height:104vw}
+  .hero-shade{top:68px;bottom:auto;height:min(88vw,390px);background:linear-gradient(180deg,transparent 34%,rgba(245,245,243,.18) 62%,rgba(245,245,243,.96) 100%)}
   .hero-molecules{display:block;width:min(72vw,330px)}
   .hero-molecules-left{top:92px;left:-43%;opacity:.18}
   .hero-molecules-right{top:74px;right:-38%;opacity:.32}
-  .hero-grid{display:block;min-height:0;padding-top:calc(min(76vw,360px) - 18px);padding-bottom:24px}
+  .hero-product{top:84px;right:24px;width:min(76vw,340px)}
+  .hero-grid{display:block;min-height:0;padding-top:calc(min(88vw,390px) - 10px);padding-bottom:24px}
   .hero-copy{max-width:none;padding:0}
   .hero .eyebrow{max-width:30ch;margin-bottom:14px;font-size:11px;letter-spacing:.1em}
   .hero h1{margin-bottom:18px;font-size:clamp(38px,10.5vw,48px)}
@@ -789,6 +797,7 @@ p{margin-bottom:20px}
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none;transition:none}
   .hero-molecules{animation:none}
+  .hero-product{animation:none}
   .benefit-card-front img{animation:none!important}
   .mechanism-details article,.mechanism-molecule{animation:none}
   .chart-product-line,.chart-stiim-line{animation:none!important;stroke-dasharray:none;stroke-dashoffset:0}
