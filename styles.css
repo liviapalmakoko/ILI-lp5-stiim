@@ -231,7 +231,7 @@ p{margin-bottom:20px}
 .mechanism-field i:nth-child(1){width:510px;height:510px;border:1px dashed rgba(168,120,0,.42)}
 .mechanism-field i:nth-child(2){width:450px;height:450px;background:repeating-conic-gradient(from -90deg,rgba(168,120,0,.52) 0 1.35deg,transparent 1.35deg 3.25deg);clip-path:inset(0 0 0 50%);-webkit-mask:radial-gradient(circle,transparent 0 58%,#000 58.5% 71%,transparent 71.5%);mask:radial-gradient(circle,transparent 0 58%,#000 58.5% 71%,transparent 71.5%)}
 .mechanism-field i:nth-child(3){width:390px;height:390px;background:radial-gradient(circle at 62% 50%,rgba(255,202,8,.45),rgba(255,202,8,.12) 58%,transparent 72%);clip-path:inset(0 0 0 48%);filter:blur(9px)}
-.mechanism-molecule{position:absolute;top:50%;left:40%;z-index:2;width:210px;height:210px;object-fit:contain;filter:drop-shadow(0 22px 34px rgba(115,85,0,.18)) brightness(1.01);transform:translate(-50%,-50%);animation:mechanism-molecule-float 6s ease-in-out infinite alternate}
+.mechanism-molecule{position:absolute;top:50%;left:40%;z-index:2;width:282px;height:282px;object-fit:contain;filter:drop-shadow(0 22px 34px rgba(115,85,0,.18)) brightness(1.01);transform:translate(-50%,-50%);animation:mechanism-molecule-float 6s ease-in-out infinite alternate}
 .mechanism-field>span{display:none}
 .mechanism-glass-tabs{position:absolute;top:50%;right:12%;z-index:5;display:grid;width:min(46%,310px);gap:18px;transform:translateY(-50%)}
 .mechanism-glass-tabs::before{content:"";position:absolute;inset:-28px -20px;z-index:-1;border-radius:42px;background:rgba(255,255,255,.34);filter:blur(18px)}
@@ -339,10 +339,8 @@ p{margin-bottom:20px}
 .concentration-panel{padding:2px 0 2px 34px;border-left:1px solid rgba(124,102,43,.14)}
 .concentration-slider{position:relative;overflow:hidden;border:1px solid rgba(150,111,0,.18);border-bottom:0;border-radius:20px 20px 0 0;background:#fff4d3;box-shadow:0 20px 42px -36px rgba(94,67,0,.42);aspect-ratio:2.8/1;isolation:isolate}
 .concentration-slider-layer{position:absolute;inset:0;overflow:hidden}
-.concentration-slider-layer img{position:absolute;top:50%;width:200%;max-width:none;height:auto;transform:translateY(-50%)}
-.concentration-slider-low img{right:0}
+.concentration-slider-layer img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .concentration-slider-high{z-index:1;clip-path:inset(0 calc(100% - var(--split)) 0 0)}
-.concentration-slider-high img{left:0}
 .concentration-slider-handle{position:absolute;top:0;bottom:0;left:var(--split);z-index:3;width:2px;background:rgba(255,255,255,.94);box-shadow:0 0 18px rgba(79,50,0,.28);pointer-events:none;transform:translateX(-50%)}
 .concentration-slider-handle span{position:absolute;top:50%;left:50%;display:grid;width:38px;height:38px;border:1px solid rgba(116,83,0,.2);border-radius:50%;background:#fffdf6;color:#806000;font-size:17px;line-height:1;place-items:center;box-shadow:0 8px 24px rgba(68,43,0,.24);transform:translate(-50%,-50%)}
 .concentration-slider input{position:absolute;inset:0;z-index:4;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
@@ -703,7 +701,7 @@ p{margin-bottom:20px}
   .mechanism-field i:nth-child(1){width:220px;height:220px}
   .mechanism-field i:nth-child(2){width:186px;height:186px;clip-path:none}
   .mechanism-field i:nth-child(3){width:154px;height:154px;clip-path:none}
-  .mechanism-molecule{left:50%;width:118px;height:118px}
+  .mechanism-molecule{left:50%;width:159px;height:159px}
   .mechanism-field>span{display:none}
   .mechanism-glass-tabs{position:relative;top:auto;right:auto;bottom:auto;left:auto;width:100%;gap:8px;transform:none}
   .mechanism-glass-tabs::before{inset:-10px;border-radius:24px}

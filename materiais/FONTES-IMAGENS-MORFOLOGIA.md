@@ -80,3 +80,39 @@ esferas nos dois produtos. O texto do bloco de distribuição (`index.html`, pai
 ainda diz *"Geometria irregular, semelhante a areia, com perda precoce de volume"* — isso
 contradiz a imagem que agora está logo acima e a frase do próprio artigo. Não foi alterado
 porque não estava no escopo dos ajustes pedidos, mas **precisa de decisão do cliente.**
+
+---
+
+## Adendo 25/08 — o que o resgate do servidor mostrou
+
+Os ajustes de 19/08 foram recuperados dos servidores (`prod-sites` e `dev`, snapshots
+byte a byte idênticos) e aplicados na branch. Isso trouxe três fatos novos sobre este bloco.
+
+**1. Já existia uma derivação anterior da mesma Figura 4.** O snapshot de 19/08 usava
+`sem-produtoA-g004a.webp` (1232×948) e `sem-stiim-g004b.webp` (1236×951) — recortes da mesma
+`g004`, feitos por outra pessoa, com enquadramento diferente do nosso e sem a etiqueta de painel.
+
+**2. A atribuição de painel bate com a nossa.** Comparadas lado a lado, a derivação de 19/08
+atribui exatamente como a de hoje:
+
+| Painel | Superfície | 19/08 | Hoje |
+|---|---|---|---|
+| A (esquerda) | rugosa, nodular | `sem-produtoA-g004a` | `sem-produtoA-fig4a` |
+| B (direita) | lisa, regular | `sem-stiim-g004b` | `sem-stiim-fig4b` |
+
+**Isso não fecha a pendência.** As duas derivações partem da mesma figura e, muito
+provavelmente, da mesma descrição do cliente ("Produto A: superfície irregular" / "STIIM:
+superfície regular"). Duas pessoas repetindo a mesma inferência não é uma segunda fonte —
+é a mesma inferência duas vezes. A confirmação continua sendo a legenda da Figura 4 no PDF.
+O que muda é o custo do erro: se a atribuição estiver invertida, **já esteve no ar em produção
+desde 19/08**, não é um erro novo desta branch.
+
+**3. Dois dos três "ajustes de texto que acompanharam a troca" já estavam no servidor.**
+As legendas "Superfície e estrutura irregulares" e "Superfície regular, estrutura
+tridimensional e microesferas uniformes" foram aplicadas em 19/08, não hoje — a seção acima
+as descreve como se fossem desta troca, o que não procede. Só a terceira
+("Microscopia FE-SEM x5.000." → MEV + barra de escala) é de hoje.
+
+Os recortes `g004` de 19/08 **não** foram trazidos para a branch: os de hoje têm proporção
+casada com o CSS (1.3:1) e preservam a etiqueta de painel, que é o que torna a citação
+verificável. Ficam nos snapshots em `~/stim-prod` e `~/stim-dev` caso seja preciso comparar.
