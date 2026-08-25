@@ -152,18 +152,18 @@ p{margin-bottom:20px}
 .technology{background:var(--surface)}
 .technology-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:76px;align-items:center}
 .identity-card{margin:0;overflow:hidden;border-radius:var(--radius);background:#eee}
-.identity-card img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 64%}
+.identity-card img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center}
 .technology-copy>p:not(.eyebrow){max-width:650px;color:#555;font-size:19px}
 .feature-list{margin:38px 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}
 .feature-list li{display:grid;grid-template-columns:42px 1fr;gap:18px;padding:19px 0;border-bottom:1px solid var(--line);font-size:17px;line-height:1.45}
 .feature-list span{color:#a87800;font-size:12px;font-weight:700;letter-spacing:.08em}
-.comparison{display:grid;grid-template-columns:.8fr 1fr 1fr;gap:18px;align-items:end;margin-top:60px}
+.comparison{display:grid;grid-template-columns:.8fr 1fr 1fr;gap:18px;align-items:stretch;margin-top:60px}
 .comparison-heading{align-self:center;padding-right:28px}
 .comparison-heading h3{margin-bottom:12px;font-size:32px}
 .comparison-heading p:last-child{margin:0;color:var(--muted);font-size:14px}
-.comparison figure{margin:0;overflow:hidden;border:1px solid var(--line);border-radius:var(--radius);background:#fff}
+.comparison figure{display:flex;flex-direction:column;margin:0;overflow:hidden;border:1px solid var(--line);border-radius:var(--radius);background:#fff}
 .comparison figure img{width:100%;aspect-ratio:1.3/1;object-fit:cover}
-.comparison figcaption{display:flex;flex-direction:column;gap:4px;padding:22px 24px}
+.comparison figcaption{display:flex;flex:1;flex-direction:column;gap:4px;padding:22px 24px}
 .comparison figcaption strong{font-size:18px}
 .comparison figcaption span{color:var(--muted);font-size:13px}
 .comparison-credit{grid-column:1/-1;margin:16px 0 0;color:var(--muted);font-size:12px;line-height:1.65}
