@@ -57,12 +57,22 @@ nas palavras de ênfase.
 
 - [`materiais/DIAGNOSTICO-E-PLANO.md`](materiais/DIAGNOSTICO-E-PLANO.md) — diagnóstico da v1, as
   contradições entre as rodadas de ajuste e o plano de execução. **Ler antes de mexer.**
+- [`materiais/FONTES-IMAGENS-MORFOLOGIA.md`](materiais/FONTES-IMAGENS-MORFOLOGIA.md) — de onde vêm
+  as micrografias do bloco "Morfologia da superfície", como foram recortadas, e a pendência de
+  atribuição painel→produto. **Ler antes de publicar esse bloco.**
 - `materiais/Landing Page - STIIM.docx` — briefing original do cliente (5 dobras)
 - `materiais/02-ajustes/` — o PPT em que o cliente desenhou a página que espera
 - `materiais/00-versoes-koko/` — reskin descartado, para comparação
 
 ## Pendências
 
+- **Bloqueante:** a atribuição painel→produto das micrografias da Figura 4 (`A` = Produto A,
+  `B` = STIIM) é inferência, não leitura da legenda — o artigo chama os materiais de "Sample R" e
+  "Sample S". Confirmar contra o PDF antes de publicar. Detalhe em
+  `materiais/FONTES-IMAGENS-MORFOLOGIA.md`.
+- O texto "semelhante a areia" no painel "Produto A" do bloco de distribuição contradiz a
+  micrografia real agora exibida acima dele (ambos os produtos são esféricos). Precisa de decisão
+  do cliente.
 - Tamanho da microesfera está **inconsistente nas fontes do cliente**: a lâmina diz `~34 µm` numa
   página e `30 µm` em outra, o PPT diz `25–45 µm`, e uma rodada de ajuste pediu explicitamente
   `~34 µm`. A página usa `25–45 µm` (fonte mais recente). Precisa de definição.
