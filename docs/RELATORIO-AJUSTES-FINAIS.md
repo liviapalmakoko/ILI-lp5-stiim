@@ -466,10 +466,19 @@ espelho e confirmar que ele mostra a esfera dourada com fragmentos na seção La
 base está confirmada. Se mostrar outra coisa, me avisa que eu refaço a branch a partir da
 base certa.
 
-### 4. Nada foi publicado
+### 4. Nada foi publicado (e o push funcionou, não precisou de bundle)
 
 Commit e push apenas na branch de trabalho `ajustes-stiim-86ah19vv5`. `main` não foi tocada.
 Publicar é da Gabs ou do Murilo.
+
+A caixa **tem** credencial de push para o repositório da Lívia: o `gh` está autenticado como
+`gabriellef1` com escopo `repo`, e o push pelo remote HTTPS passou. Então **não** foi preciso
+gerar bundle em `~/docs/stiim-86ah19vv5.bundle`.
+
+Um efeito colateral que vale registrar: como a branch de trabalho saiu de
+`feat/fotos-reais-morfologia`, que era local, o push levou junto os três commits que nunca
+tinham subido (`ef4debf`, `d17e9e6`, `06228f7`). Eles agora existem no remoto, mas apenas
+dentro desta branch de trabalho. `main` continua exatamente onde estava, em `8001760`.
 
 ---
 
