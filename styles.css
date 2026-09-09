@@ -205,13 +205,15 @@ p{margin-bottom:20px}
 .chart-grid line{stroke:rgba(66,61,49,.1);stroke-width:1}
 .chart-range{fill:rgba(255,202,8,.09)}
 .chart-axis{stroke:rgba(66,61,49,.34);stroke-width:1.4}
-.chart-product-line,.chart-stiim-line{fill:none;stroke-dasharray:1;stroke-dashoffset:1;transition:opacity .32s,stroke-width .32s,filter .32s}
+.chart-product-line,.chart-stiim-line{fill:none;stroke-dashoffset:0;transition:opacity .32s,stroke-width .32s,filter .32s}
+.chart-product-line{stroke-dasharray:.025 .018}
+.chart-stiim-line{stroke-dasharray:none}
 .chart-product-line{stroke:#77736a;stroke-width:3}
-.chart-stiim-area{fill:url(#stiimChartFill);opacity:0}
+.chart-stiim-area{fill:url(#stiimChartFill);opacity:1}
 .chart-stiim-line{stroke:#c89400;stroke-width:4;stroke-linecap:round}
-.particle-distribution.is-visible .chart-product-line{animation:chart-product-draw 1.15s .18s var(--ease) forwards}
-.particle-distribution.is-visible .chart-stiim-line{animation:chart-draw 1.2s .5s var(--ease) forwards}
-.particle-distribution.is-visible .chart-stiim-area{animation:chart-area-in .7s 1.35s ease forwards}
+.particle-distribution.is-visible .chart-product-line{animation:chart-product-draw 1.15s .18s var(--ease) both}
+.particle-distribution.is-visible .chart-stiim-line{animation:chart-draw 1.2s .5s var(--ease) both}
+.particle-distribution.is-visible .chart-stiim-area{animation:chart-area-in .7s 1.35s ease both}
 .chart-hit{fill:none;stroke:transparent;stroke-width:24;cursor:pointer;pointer-events:stroke}
 .chart-hit:focus{outline:none}
 .particle-distribution[data-active-series="stiim"] .chart-product-line{opacity:.22}
@@ -231,9 +233,9 @@ p{margin-bottom:20px}
 .distribution-insight small{color:#756e5e;font-size:11px}
 .distribution-insight strong{color:#725600;font-size:12px}
 .distribution-insight article div span{color:var(--muted);font-size:11px;line-height:1.5}
-@keyframes chart-draw{to{stroke-dashoffset:0}}
+@keyframes chart-draw{from{stroke-dasharray:1;stroke-dashoffset:1}to{stroke-dasharray:1;stroke-dashoffset:0}}
 @keyframes chart-product-draw{0%{stroke-dasharray:1;stroke-dashoffset:1}82%{stroke-dasharray:1;stroke-dashoffset:0}100%{stroke-dasharray:.025 .018;stroke-dashoffset:0}}
-@keyframes chart-area-in{to{opacity:1}}
+@keyframes chart-area-in{from{opacity:0}to{opacity:1}}
 @keyframes distribution-panel-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
 /* Mechanism */
@@ -851,7 +853,9 @@ p{margin-bottom:20px}
   .hero-product{animation:none}
   .benefit-card-front img{animation:none!important}
   .mechanism-details article,.mechanism-molecule{animation:none}
-  .chart-product-line,.chart-stiim-line{animation:none!important;stroke-dasharray:none;stroke-dashoffset:0}
+  .chart-product-line,.chart-stiim-line{animation:none!important;stroke-dashoffset:0}
+  .chart-product-line{stroke-dasharray:.025 .018}
+  .chart-stiim-line{stroke-dasharray:none}
   .chart-stiim-area{animation:none!important;opacity:1}
   .mechanism-glass-stage:hover,.mechanism-glass-stage:hover>span{transform:none}
   *,*::before,*::after{transition-duration:.01ms!important;transition-delay:0s!important}

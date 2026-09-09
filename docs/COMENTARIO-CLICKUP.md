@@ -81,3 +81,21 @@ Apliquei nos dois lugares que você marcou: o bloco da tecnologia Lattice-Pore e
 Uma coisa importante: as seções científicas não mudaram nada. A figura do artigo continua em preto e branco nos dois lugares onde ela é citada, com a letra do painel, a barra de escala e a referência. A colorização dourada existe só na peça decorativa, e o texto alternativo dela diz que é representação a partir de micrografia, sem afirmar concentração nem produto.
 
 Mandei os prints de antes e depois. O Lighthouse não caiu, continua em 100 de acessibilidade e subiu de 91 para 92 em performance. Console e rede limpos. Nesta rodada não enviei lead nenhum.
+
+---
+
+# Complemento 3 (partícula refeita)
+
+> Revisar antes de postar. NÃO postado.
+
+---
+
+Oi Mari, refiz a partícula. A primeira versão tinha ficado pequena dentro do card, meio chapada e com a cor puxando pro esverdeado.
+
+Continua sendo a mesma partícula real do estudo, mesmo recorte, nada gerado. O que mudou foi o tratamento. Ela agora ocupa cerca de 70% da largura do card, ganhou luz vindo do alto à esquerda e sombra no lado de baixo à direita, então lê como um corpo tridimensional de verdade e não como um adesivo. Coloquei também uma sombrinha de contato embaixo, pra ela pousar em vez de flutuar. A cor ficou mais clara e mais quente, no champagne, sem o tom oliva. E dei uma afiada na textura antes de colorir, pra as placas da superfície voltarem a aparecer, sem virar granulado.
+
+Continua sem reflexo branco e sem transparência, que era o que dava a cara de vidro. Apliquei nos dois blocos e conferi em desktop, tablet e celular.
+
+Sobre o gráfico da distribuição que você pediu pra eu conferir: ele aparece sozinho, sem precisar clicar em nada, tanto em desktop quanto em tablet, e também no modo de menos animação do sistema. Só que eu achei uma fragilidade e corrigi: o estado padrão das curvas era invisível, e elas só apareciam quando a animação rodava. Se por qualquer motivo a animação não disparasse, o gráfico ficaria vazio pra sempre. Agora é o contrário: o padrão é a curva desenhada, e a animação é que parte do vazio. Na prática ninguém vê diferença, mas o gráfico deixou de depender dela pra existir. Foi por isso também que a curva não aparecia nos prints que eu te mandei antes.
+
+Mandei os prints de antes e depois da partícula e do gráfico. Acessibilidade, boas práticas e SEO seguem em 100. Nesta rodada não enviei lead nenhum.

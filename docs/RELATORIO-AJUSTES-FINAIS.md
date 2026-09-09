@@ -768,3 +768,134 @@ micrografia.
 - **Push só na branch de trabalho** `ajustes-stiim-86ah19vv5`. `main` não foi tocada.
 - **Nada foi descartado:** `stiim-particula-ilustracao-v1.webp` e `-v2.webp` continuam
   versionados, só saíram da página.
+
+---
+
+# Adendo 3 · partícula refeita e o gráfico de distribuição (09/09/2026, fim do dia)
+
+A primeira versão da partícula ficou fraca: pequena dentro do card, sem volume, puxando para
+o oliva e com a textura borrada. Refiz o tratamento **em cima do mesmo recorte do painel D**,
+sem tocar no recorte nem gerar nada novo.
+
+## O que mudou no tratamento
+
+| | v1 | v2 |
+|---|---|---|
+| Escala da esfera no quadro | 54,5% da largura | **70%** |
+| Volume | nenhum, só a luz do próprio MEV | **sombreamento direcional**, luz no alto-esquerda |
+| Sombra de contato | não tinha | elipse suave sob a esfera |
+| Rampa | `#634F21 → #A6874 4 → #F7EAC8` (puxava oliva) | **`#8A6A2B → #C9A55A → #F3E4BD`**, mais clara e quente |
+| Textura | direto da micrografia | **unsharp mask** antes da colorização |
+
+**Volume.** Um mapa de sombreamento é calculado a partir da geometria da própria máscara: a
+normal da superfície é aproximada por `nz = sqrt(1 - nx² - ny²)` sobre o raio da silhueta, e a
+luz vem de `(-0,55, -0,55, 0,63)` normalizada, ou seja, do alto-esquerda e ligeiramente à
+frente. O resultado (`0,50 + 0,72 × lambert`, limitado entre 0,46 e 1,24) é **multiplicado na
+luminância** antes da colorização, exatamente como pedido. A sombra fica no baixo-direita.
+
+Antes de multiplicar, a luminância normalizada é remapeada para `0,20 + n × 0,68`, deixando
+folga nas duas pontas para o sombreamento não estourar o alto nem fechar o baixo.
+
+**Continua sem cara de vidro.** A rampa termina em `#F3E4BD`: sem branco puro não há reflexo
+especular. Não há transparência: o alfa é opaco no interior e só suavizado na borda.
+
+**Textura.** Unsharp mask de raio 2,0, 120% e limiar 3 aplicado **antes** da colorização, para
+recuperar as placas da superfície. O limiar 3 é o que evita granulação: ele deixa o ruído fino
+do MEV de fora e afia só as bordas das placas.
+
+**Sombra de contato:** elipse de `rgba(120, 94, 34, 0.34)` com desfoque de 26 px, sob a esfera,
+no tom quente do fundo champagne. Faz a partícula pousar em vez de flutuar.
+
+Satélites tratados com os mesmos parâmetros, um pouco mais suaves (unsharp 1,4 / 90%, força de
+luz 0,62) para não competirem com a principal.
+
+## Arquivos
+
+Mesmos nomes e tamanhos de antes, regerados:
+
+| Arquivo | Tamanho |
+|---|---|
+| `lattice-pore-particula-dourada-1600.webp` | 1600 × 1600, 98 KB |
+| `lattice-pore-particula-dourada-1600.png` | 1600 × 1600, 1,1 MB |
+| `lattice-pore-particula-dourada-800.webp` | 800 × 800, 40 KB |
+| `lattice-pore-particula-dourada-800.png` | 800 × 800, 384 KB |
+
+**A página serve o de 800 nos dois blocos.** Medi o tamanho real de render em 1920, 1440,
+1024, 768 e 390, com `devicePixelRatio` 2: o maior caso é **948 px** (viewport de 768 a 2x).
+O arquivo de 1600 seria o dobro do necessário. Servindo o de 800 nos dois lugares a página faz
+**uma requisição a menos** e carrega **40 KB no lugar de 138 KB**. Conferi a diferença visual
+no pior caso, ampliando o de 800 para 948 px contra o de 1600 reduzido para o mesmo tamanho:
+PSNR de 43,9 dB, indistinguível numa textura difusa sem borda dura nem texto. O de 1600
+continua exportado no repositório como fonte.
+
+## Escala e alinhamento na página
+
+- **Bloco Lattice-Pore:** a esfera ocupa cerca de 70% da largura do card, como pedido.
+- **Bloco de resposta contínua:** mesma leitura, com a partícula em 286 px no desktop,
+  236 px em `≤1020`, 208 px em `≤780` e 186 px em `≤520`, sempre livre do painel de vidro e da
+  coluna de cards. Conferido em 1440, 768 e 390.
+
+Antes e depois em `docs/shots/molecula/particula-v1-vs-v2-tecnologia-1440.jpg`,
+`particula-v1-vs-v2-resposta-continua-1440.jpg` e `particula-v2-768-390.jpg`.
+
+## O gráfico "Regularidade também na distribuição"
+
+**Aparece sem interação nenhuma, em 1440 e em 768.** Testei rolando a página normalmente, sem
+forçar classe nem clicar em nada: as duas curvas desenham sozinhas quando o bloco entra na
+tela, e o estado final fica visível. Com `prefers-reduced-motion: reduce` também, sem
+animação, direto no estado final. Evidência em
+`docs/shots/molecula/grafico-distribuicao-sem-interacao.jpg`.
+
+**Mas a visibilidade dependia da animação, e isso eu corrigi.** O estado padrão das curvas era
+`stroke-dasharray: 1; stroke-dashoffset: 1`, ou seja, **invisível**, e só a classe
+`.is-visible` as revelava. Bastava o `IntersectionObserver` não disparar para o gráfico ficar
+vazio para sempre. Inverti: o padrão agora é o **estado final, visível**, e a animação parte do
+estado escondido através de um keyframe com `animation-fill-mode: both`. O desenho continua
+idêntico quando há JavaScript e movimento; quando não há, a curva simplesmente já está lá.
+
+Foi por isso, aliás, que a curva não aparecia nos shots de seção: o script de captura desliga
+as animações para não pegar quadro intermediário, e sem animação a curva ficava invisível.
+Agora ela aparece nos shots, o que se vê comparando os dois lados de
+`particula-v1-vs-v2-tecnologia-1440.jpg`.
+
+Uma observação que fica registrada, fora do escopo desta rodada: **com JavaScript desligado, o
+conteúdo de toda a página some**, porque `.reveal` tem `opacity: 0` até o observer marcar
+`.is-visible`. Isso vale para todas as seções, não só para o gráfico, e é comportamento
+anterior a estas rodadas. Se quiserem, dá para resolver com um `<noscript>` que zere o
+`.reveal`, mas é decisão de outra conversa.
+
+## Validação
+
+- Console e rede limpos em 1440, 768 e 390: zero erro, zero requisição falhada, zero 404.
+- Grep no fonte e no DOM renderizado: `corporal`, `corporais`, `corpora`, `toxina`, `botul`,
+  `Produto A` e `semelhante a areia` seguem em **zero**.
+- Acessibilidade, Boas práticas e SEO seguem em **100**.
+- **Performance: não caiu.** Melhor execução com a máquina ociosa: **92**, o mesmo teto da
+  versão anterior (também 92).
+
+| Estado | Execuções | Melhor |
+|---|---|---|
+| v1, partícula pequena | 91, 92 | **92** |
+| v2, máquina ociosa | 92, 90, 91 | **92** |
+
+  O que oscila entre execuções é só o Total Blocking Time, que nesta caixa foi de 0 ms a
+  290 ms rodando exatamente a mesma página; nas medições feitas com a máquina carregada
+  (load 5,8, várias instâncias do Chromium abertas) a nota caiu para 82, e com a máquina
+  ociosa voltou para 92. LCP (3,3 s), CLS (0) e peso total (474 KiB) são idênticos em todas.
+
+  **A troca da imagem não podia mesmo afetar a nota, e dá para provar:** o arquivo da
+  partícula tem `loading="lazy"` e fica abaixo da primeira dobra, e o Lighthouse não rola a
+  página. Conferi a lista de requisições das duas execuções: 19 requisições nas duas, e
+  **nenhum arquivo da partícula é baixado** em nenhuma delas. Toda a variação de nota era
+  ruído da máquina.
+
+## Segurança (desta rodada)
+
+- **Nenhum segredo novo.** A rodada regerou imagem a partir de arquivo que já estava na caixa e
+  mexeu em HTML e CSS. Nenhuma credencial entrou no código; o `.env` não foi criado nem lido.
+- **Endpoints intocados.** Formulário, endpoint do RD Station e scripts de tracking não foram
+  alterados. **Nenhum lead novo foi enviado.**
+- **Fronteira de rede respeitada.** Trabalho local em `127.0.0.1:8137`.
+- **Zero escrita no ClickUp e no Drive.**
+- **Push só na branch de trabalho** `ajustes-stiim-86ah19vv5`. `main` não foi tocada.
+- **Nada foi descartado.** Os dois assets antigos da molécula e o de 1600 seguem versionados.

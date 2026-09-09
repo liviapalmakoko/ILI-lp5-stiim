@@ -12,7 +12,7 @@
 
   <link rel="preload" href="assets/fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/GOTHAM-BOLD.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="styles.css?v=20260909-63" />
+  <link rel="stylesheet" href="styles.css?v=20260909-64" />
 
   <script>window.__TRK__={brand:'ilikia',pixelId:'666277432116339',ga4Id:'',collect:'https://track-ilikia.koko.ag/collect'};</script>
   <noscript><img height="1" width="1" class="tracking-pixel" src="https://www.facebook.com/tr?id=666277432116339&amp;ev=PageView&amp;noscript=1" alt="" /></noscript>
@@ -164,7 +164,12 @@
            volta a cara de vidro. A textura de placas continua com o contraste da micrografia.
            As secoes cientificas nao mudam: a g004 segue em preto e branco. -->
       <figure class="identity-card identity-card--particula reveal">
-        <img src="assets/img/lattice-pore-particula-dourada-1600.webp" alt="Partícula STiiM com acabamento dourado, representação a partir de micrografia" width="1600" height="1600" loading="lazy" />
+        <!-- serve o arquivo de 800: medi o tamanho real de render em 1920/1440/1024/768/390 e o
+             maior caso e 948px (768px de viewport a 2x). O de 1600 continua exportado no repo
+             como fonte, mas na pagina seria o dobro do necessario. Com os dois blocos apontando
+             para o mesmo arquivo a pagina faz uma requisicao a menos e carrega 41 KB no lugar
+             de 141 KB. -->
+        <img src="assets/img/lattice-pore-particula-dourada-800.webp" alt="Partícula STiiM com acabamento dourado, representação a partir de micrografia" width="800" height="800" loading="lazy" />
       </figure>
       <div class="technology-copy reveal">
         <p class="eyebrow"><span class="brand-dot"></span> Tecnologia Lattice-Pore®</p>
