@@ -12,7 +12,7 @@
 
   <link rel="preload" href="assets/fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/GOTHAM-BOLD.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="styles.css?v=20260909-61" />
+  <link rel="stylesheet" href="styles.css?v=20260909-62" />
 
   <script>window.__TRK__={brand:'ilikia',pixelId:'666277432116339',ga4Id:'',collect:'https://track-ilikia.koko.ag/collect'};</script>
   <noscript><img height="1" width="1" class="tracking-pixel" src="https://www.facebook.com/tr?id=666277432116339&amp;ev=PageView&amp;noscript=1" alt="" /></noscript>
@@ -352,15 +352,24 @@
 
   <section class="section application" id="aplicacao">
     <div class="container application-grid">
-      <!-- 86ah19vv5: a troca da foto pela "mulher aprovada" do PDF NAO foi feita.
-           O que o PDF traz e um print de slide (768x432) do deck do cliente, nao o arquivo
-           da foto - nao da para recortar a modelo dali sem degradar, e gerar uma parecida
-           esta explicitamente proibido. Segue a foto aprovada anterior. Ver relatorio. -->
+      <!-- 86ah19vv5 (rodada de busca de asset): a foto aprovada FOI encontrada em alta.
+           Origem: "VA STIIM.pdf" (Drive, KV STIIM > Saida), pagina 6 "Indicacoes e areas de
+           tratamento" - a imagem embutida sai em 2480x3508 a 300 dpi. E a mesma modelo, mesma
+           pose, mesmo maio e mesmo fundo de marmore do slide 400GRAUS que o cliente marcou no
+           PDF de ajustes; o print do PDF tinha so 768x432 porque e captura de tela do slide.
+           A mesma foto aparece tambem em "CAMPANHA STIIM - APRO DE CRIATIVOS.pptx" (image12,
+           1080x1920). Usei a do VA por ser a de maior resolucao e a oficial.
+           Recorte: 2480x3100 a partir de y=300, so recorte, sem distorcer e sem retoque. E o
+           recorte mais fechado que mantem a modelo inteira em 4:5, que e a proporcao do card.
+
+           OS PONTOS NO ROSTO SAIRAM JUNTO, E E CONSEQUENCIA DIRETA DA TROCA: eles marcavam
+           regiao malar, contorno facial e mandibula por coordenadas percentuais sobre um
+           retrato. Sobre uma foto de corpo eles cairiam em lugar nenhum, e manter nome de
+           sitio anatomico apontando para o lugar errado seria pior do que nao ter ponto.
+           A leitura da secao agora e a mesma do slide do cliente: foto + as quatro
+           finalidades ao lado. Ver relatorio. -->
       <figure class="model-card application-map reveal" data-application-map>
-        <img src="assets/img/aplicacao-rosto-frontal.webp" alt="Retrato frontal de paciente com as áreas de aplicação de STIIM indicadas" width="941" height="1672" loading="lazy" />
-        <button class="area-hotspot hotspot-label-left" type="button" style="--x:70%;--y:63%" data-application-index="1" aria-label="Contorno facial" aria-pressed="false"><span>02</span><b>Contorno facial</b></button>
-        <button class="area-hotspot hotspot-label-left is-active" type="button" style="--x:67%;--y:49%" data-application-index="0" aria-label="Região malar" aria-pressed="true"><span>01</span><b>Região malar</b></button>
-        <button class="area-hotspot" type="button" style="--x:34%;--y:66%" data-application-index="2" aria-label="Mandíbula" aria-pressed="false"><span>03</span><b>Mandíbula</b></button>
+        <img src="assets/img/aplicacao-modelo-va.webp" alt="Modelo do material oficial de STIIM, em pé, de perfil" width="1200" height="1500" loading="lazy" />
       </figure>
       <div class="application-copy reveal">
         <p class="eyebrow"><span class="brand-dot"></span> Aplicação e versatilidade</p>

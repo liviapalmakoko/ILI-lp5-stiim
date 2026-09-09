@@ -518,3 +518,126 @@ dentro desta branch de trabalho. `main` continua exatamente onde estava, em `800
 - **Push só na branch de trabalho** `ajustes-stiim-86ah19vv5`. `main` não recebeu nada.
 - **Nada foi descartado.** As cópias fora de git em `~/stim-dev` e `~/stim-prod`, a branch
   local `feat/fotos-reais-morfologia` e os assets antigos continuam onde estavam.
+
+---
+
+# Adendo · rodada de busca dos dois assets bloqueados (09/09/2026)
+
+Os bloqueios 1 e 2 do relatório acima diziam que a molécula dourada e a foto da mulher não
+existiam no projeto. **Um dos dois estava errado.** Esta rodada refez a busca a sério, em
+quatro frentes, e o resultado é: **a foto da mulher existe, em alta, e foi aplicada. A
+molécula continua não existindo em lugar nenhum que eu alcance.**
+
+## Como procurei
+
+Montei um acervo de **314 imagens** de todas as origens possíveis e comparei cada uma contra
+as duas miniaturas do PDF do cliente, por correlação cruzada normalizada em várias escalas
+(template matching), mais inspeção visual em contact sheets. Nenhum candidato de molécula
+passou de **0,75** de correlação, e os poucos que chegaram perto casaram pelo fundo branco,
+não pelo desenho. Um acerto de verdade ficaria acima de 0,9.
+
+| Frente | O que foi varrido | Resultado |
+|---|---|---|
+| 1. Git do repo da Lívia | **Todos** os commits de **todas** as refs (`git rev-list --all` + `git ls-tree -r`), 70 blobs de imagem únicos por conteúdo, extraídos com `git cat-file` e inspecionados. Inclui `main`, as três branches locais, `materiais/img-nao-usadas/` (25 arquivos) e a cópia arquivada da LP v1. Conferi também objetos inalcançáveis (`git fsck --unreachable`), stash e reflog. | Molécula: não. Mulher: não. |
+| 2. Snapshots do servidor | `~/stim-dev` e `~/stim-prod`, 64 imagens. | Molécula: não. Mulher: não. |
+| 3. Drive (rclone, por ID de pasta) | KV STIIM e subpastas **Elementos**, **Saída**, **Aberto**; **Atualizaçoes STIIM/stiim-redesign** (34); **NOVAS IMAGENS - LP STIIM**; **02-STIIM/LOGO STIIM** (18); as duas pastas de assets de 21/07 (`01-modelo-hero…17-integracao`, 32 no total); **id. visual (stiim)** inteira, recursiva, incluindo `v3/04-moleculas-tecnologia`. | **Mulher: ACHADA.** Molécula: não. |
+| 4. Materiais compostos | `VA STIIM.pdf` (99 MB, 9 páginas, 71 imagens embutidas extraídas), `CAMPANHA STIIM - APRO DE CRIATIVOS.pptx` (18 mídias), `TAKE ONE - STIIM.pdf`, e frames dos 4 vídeos `TEC-*` e dos 3 GIFs da proposta de 22/07. | **Mulher: ACHADA.** Molécula: não. |
+
+Buscas por nome no Drive, sem distinção de maiúsculas, cobrindo `molecula`, `particula`,
+`sphere`, `esfera`, `lattice`, `microesfera` e `STIIM`, também não trouxeram nada novo.
+
+Shots lado a lado em `docs/shots/molecula/`.
+
+## Mulher: ACHADA e APLICADA
+
+**Onde estava:** `VA STIIM.pdf`, página 6 ("Indicações e áreas de tratamento"), imagem
+embutida, **2480 × 3508 px a 300 dpi**. Caminho no Drive:
+`KV STIIM (1_A49unFXKqx0Oqw2vV6W54iiX507S5fs) > Saida > VA STIIM.pdf`.
+
+É a mesma modelo, mesma pose, mesmo maiô branco, mesmo fundo de mármore e o mesmo lettering
+amarelo do slide 400GRAUS que o cliente marcou. O print do PDF tinha 768 × 432 porque é
+captura de tela do slide, não o arquivo. A mesma foto aparece também em
+`CAMPANHA STIIM - APRO DE CRIATIVOS.pptx` (mídia `image12`, 1080 × 1920) — usei a do VA por
+ser a oficial e a de maior resolução.
+
+**O que foi feito:** recorte `2480 × 3100` a partir de `y=300` e redução para
+`1200 × 1500`, salvo como `assets/img/aplicacao-modelo-va.webp` (50 KB). Só recorte e
+redimensionamento: sem retoque, sem filtro, sem distorção. O 4:5 é a proporção que o card
+`.model-card` já usava, então o `object-fit: cover` não corta nada. É o recorte mais fechado
+que mantém a modelo inteira; a área de mármore à esquerda faz parte da composição original e
+não foi recomposta.
+
+**O que saiu junto, e por quê.** Os três pontos interativos sobre o rosto (Região malar,
+Contorno facial, Mandíbula) eram posicionados por coordenadas percentuais calculadas em cima
+de um retrato. Sobre uma foto de corpo inteiro eles cairiam em pontos sem significado, e
+manter nome de sítio anatômico apontando para o lugar errado é pior do que não ter ponto.
+Foram removidos. A seção agora tem a mesma leitura do slide do cliente: a foto de um lado, as
+quatro finalidades numeradas do outro. O `object-position` do card voltou para o centro (era
+`center 58%`, enquadramento feito para o retrato).
+
+O JavaScript de `[data-application-map]` continua no `script.js` e fica inerte, porque não
+encontra mais gatilhos. Nenhum erro no console.
+
+Antes e depois em `docs/shots/molecula/aplicacoes-antes-depois-1440.jpg` e
+`-390.jpg`; origem e destino em `docs/shots/molecula/mulher-referencia-vs-encontrada.jpg`.
+
+**Uma coisa para a Mari confirmar:** o slide de referência traz, na legenda do segundo
+rótulo, a palavra proibida ("Facial & Corporal"). Trouxe só a **foto**, nunca o texto do
+slide, e o grep continua zerado. Mas se a intenção do cliente era reproduzir o slide inteiro,
+a legenda não pode vir junto.
+
+## Molécula: NÃO ACHADA. Não gerei nem recriei nada
+
+A imagem que o cliente aponta como "essa que vocês já haviam feito" é uma esfera formada por
+**placas chatas sobrepostas**, quase branca com um tom lilás, com **lascas soltas flutuando
+em volta**, sobre fundo claro. A única cópia dela que existe é a miniatura embutida no PDF de
+ajustes, com **265 × 148 px**.
+
+As candidatas mais próximas, todas descartadas por inspeção lado a lado
+(`docs/shots/molecula/molecula-referencia-vs-candidatas.jpg`):
+
+| Candidata | Onde | Tamanho | Por que não é |
+|---|---|---|---|
+| `MOLECULAS STIIM.png` | Drive, KV STIIM > Elementos | 1308 × 1091 | Esfera celular densa, esverdeada, sem lascas em volta. |
+| `stiim-particula-ilustracao-v2.webp` | repo, `assets/img/` (é a que está no ar hoje) | 1254 × 1254 | Esfera de bolhas douradas; tem fragmentos, mas o desenho é outro. |
+| `13-lattice-pore-original.png` | Drive, pasta de assets de 21/07 | 941 × 1672 | É a `lattice-pore-gerada`: esfera dourada dentro de fluido creme. |
+| `white-molecule.webp` | repo, `materiais/img-nao-usadas/` | 1024 × 1024 | Cúpula de favos branca, sem lascas. |
+| `esfera-lattice-dourada.webp` | repo, `materiais/img-nao-usadas/` | 968 × 960 | Esfera de favos amarela chapada. |
+| imagem + máscara da p.2 do `VA STIIM.pdf` | Drive, KV STIIM > Saida | 1920 × 1080 | Esfera de células finas, sem lascas; a mais parecida em família, mas não é a mesma peça. |
+| `14-microesferas-uniformes.png` | Drive, pasta de assets de 21/07 | 941 × 1672 | Várias microesferas douradas em fluido. |
+| `microesfera-stiim-isolada-v2.png` | repo, `assets/img/` | 700 × 700 | Bola dourada com casca de vidro. |
+| frames de `TEC-02-degradacao-controlada-camadas.mp4` | Drive, id. visual (stiim) v3 | 1080 × 1918 | Camadas se soltando, mas douradas e em fluido. |
+
+Nenhuma delas é a imagem do PDF, e uma "parecida" não serve: o próprio briefing proíbe
+substituir por imagem gerada, recriada ou visualmente parecida. Então **as duas ocorrências e
+o bloco de resposta contínua continuam exatamente como estavam.**
+
+**O que destrava:** o arquivo original com a Lívia, ou o link/pasta de onde o cliente tirou
+aquela miniatura para o Canva. Com ele em mãos, o tratamento dourado fosco, sem aspecto de
+vidro e sem brilho exagerado, é rápido e vale de uma vez para o bloco Lattice-Pore, para a
+segunda ocorrência e para o bloco de resposta contínua.
+
+## Validação depois da troca
+
+- Console e rede limpos em 1440, 768 e 390: zero erro, zero requisição falhada, zero 404.
+- Grep no fonte e no DOM renderizado: `corporal`, `corporais`, `corpora`, `toxina`, `botul`,
+  `Produto A` e `semelhante a areia` seguem em **zero**.
+- Lighthouse: Performance **91**, Acessibilidade **100**, Boas práticas **100**, SEO **100**.
+  LCP 3,3 s, CLS 0, peso total 472 KB.
+- Shots atualizados em `docs/shots/ajustes-finais/` (`aplicacoes-*`, `pagina-inteira-*`).
+
+## Segurança (desta rodada)
+
+- **Nenhum segredo novo.** A rodada só leu do Drive e gravou imagem e texto no repositório.
+  Nenhuma credencial entrou no código; o `.env` não foi criado nem lido. O token do
+  RD Station segue igual, e não foi tocado.
+- **Endpoints intocados.** O formulário, o endpoint do RD Station e os scripts de tracking não
+  foram alterados nesta rodada. **Nenhum lead novo foi enviado** — o único lead de teste
+  continua sendo o `[TESTE-KOKO] LP STIIM` da rodada anterior.
+- **Fronteira de rede respeitada.** Todo o trabalho foi local (`127.0.0.1:8137`) mais leitura
+  do Drive e do ClickUp pela internet. Nada tentou alcançar `10.60.x`.
+- **Zero escrita no ClickUp e no Drive.** O Drive foi só lido (`rclone copy` para o scratchpad
+  da sessão); nada foi enviado, movido ou apagado lá.
+- **Push só na branch de trabalho** `ajustes-stiim-86ah19vv5`. `main` não foi tocada.
+- **Nada foi descartado.** Os assets antigos, inclusive `aplicacao-rosto-frontal.webp`, que
+  saiu da página, continuam no repositório.

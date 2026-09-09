@@ -1,6 +1,10 @@
 # Rascunho de comentário pro ClickUp (86ah19vv5) · ajustes finais
 
 > Revisar antes de postar. Tom de pessoa, sem negrito, curto. NÃO postado.
+>
+> ATENÇÃO: o parágrafo sobre a foto da mulher, mais abaixo, está DESATUALIZADO. A foto foi
+> encontrada e aplicada depois; ver o complemento no fim deste arquivo. Se for postar os dois
+> de uma vez, corte esse parágrafo.
 
 ---
 
@@ -33,3 +37,27 @@ As imagens que você indicou para o bloco de maior e menor concentração são o
 Nas aplicações, tirei as linhas de apoio que ficavam embaixo de cada item, porque elas descreviam região do rosto e não faziam mais sentido com os títulos novos. Não inventei frase nova no lugar. Se o cliente quiser uma linha em cada uma das quatro, me manda que eu coloco.
 
 Não publiquei nada, está tudo em branch. Assim que você validar eu subo pro espelho.
+
+---
+
+# Complemento (busca dos dois assets)
+
+> Revisar antes de postar. NÃO postado.
+
+---
+
+Oi Mari, voltei nas duas imagens que tinham ficado pendentes. Uma eu achei, a outra não.
+
+A foto da mulher achei em alta. Ela estava dentro do VA STIIM, na página de indicações e áreas de tratamento: é a mesma modelo, mesma pose, mesmo maiô e mesmo fundo do slide que você marcou, só que em 2480 por 3508 a 300 dpi. O print do PDF era pequeno porque era captura de tela do slide, não o arquivo. Já apliquei na seção de aplicações, só recortando pra proporção do bloco, sem retoque nenhum.
+
+Uma consequência dessa troca que eu preciso te contar: os três pontinhos que ficavam em cima do rosto (região malar, contorno facial e mandíbula) saíram. Eles eram posicionados por coordenada em cima de um retrato, e numa foto de corpo inteiro cairiam em lugar nenhum. A seção agora ficou com a mesma leitura do slide de vocês: a foto de um lado e as quatro finalidades numeradas do outro. Mandei print de antes e depois.
+
+Um detalhe pra você confirmar: no slide de referência, embaixo de Bioestímulo e Qualidade de pele, tem escrito Facial e a palavra que não pode. Eu trouxe só a foto, o texto do slide não veio, mas se a ideia era reproduzir o slide inteiro essa legenda não pode entrar.
+
+A molécula eu não achei, e dessa vez procurei sério. Varri todo o histórico do repositório (todos os commits de todas as branches, não só o que está no ar), as duas cópias que temos do servidor, o Drive inteiro do STIIM (KV, Elementos, Saída, Aberto, a pasta de atualizações, as novas imagens, as pastas de assets de julho e a pasta de identidade visual completa), o VA STIIM, o PPT da campanha, o Take One e até os frames dos vídeos e dos GIFs. Foram 314 imagens comparadas uma a uma com a miniatura do PDF.
+
+Tem várias parecidas, e mandei um print com todas elas lado a lado pra você ver, mas nenhuma é aquela. A do PDF é uma esfera de placas chatas sobrepostas, quase branca, com lascas soltas em volta. As nossas são de bolhas ou de favos, douradas ou esverdeadas, e nenhuma tem as lascas. Como não posso gerar uma parecida, deixei as duas ocorrências e o bloco de resposta contínua como estavam.
+
+Consegue perguntar pra Li de onde ela tirou aquela imagem, ou pedir o arquivo original? Com ele em mãos eu faço o acabamento dourado fosco e aplico nos três lugares de uma vez.
+
+Console e rede continuam limpos, e o Lighthouse segue em 91 de performance e 100 de acessibilidade. Nesta rodada não enviei lead nenhum.

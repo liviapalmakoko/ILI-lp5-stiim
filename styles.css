@@ -341,7 +341,10 @@ p{margin-bottom:20px}
 .application-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:68px;align-items:start}
 .application .model-card{margin-top:47px}
 .model-card{position:relative;margin:0;overflow:hidden;border-radius:var(--radius);background:#fff}
-.model-card img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 58%}
+/* 86ah19vv5: a foto da secao de aplicacao passou a ser a aprovada do VA, ja entregue em
+   4:5, a mesma proporcao do card. object-position volta ao centro: o deslocamento de 58%
+   existia para enquadrar um retrato de rosto e agora cortaria a modelo. */
+.model-card img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center}
 .area-hotspot{position:absolute;top:var(--y);left:var(--x);z-index:2;display:grid;width:34px;height:34px;padding:0;border:2px solid rgba(255,255,255,.94);border-radius:50%;background:rgba(255,255,255,.88);color:#725600;font:inherit;place-items:center;cursor:pointer;box-shadow:0 5px 18px rgba(42,31,0,.24);transform:translate(-50%,-50%);transition:background-color .25s,border-color .25s,box-shadow .25s,transform .25s}
 .area-hotspot span{font-size:9px;font-weight:700;letter-spacing:.04em}
 .area-hotspot b{position:absolute;top:50%;left:calc(100% + 9px);width:max-content;max-width:150px;padding:8px 11px;border:1px solid rgba(255,255,255,.8);border-radius:999px;background:rgba(255,255,255,.86);color:#4d4534;font-size:10px;letter-spacing:.02em;opacity:0;pointer-events:none;box-shadow:0 8px 24px rgba(49,37,4,.13);backdrop-filter:blur(9px);transform:translate(-6px,-50%);transition:opacity .24s,transform .24s}
