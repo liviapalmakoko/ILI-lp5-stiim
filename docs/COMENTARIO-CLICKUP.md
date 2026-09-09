@@ -61,3 +61,23 @@ Tem várias parecidas, e mandei um print com todas elas lado a lado pra você ve
 Consegue perguntar pra Li de onde ela tirou aquela imagem, ou pedir o arquivo original? Com ele em mãos eu faço o acabamento dourado fosco e aplico nos três lugares de uma vez.
 
 Console e rede continuam limpos, e o Lighthouse segue em 91 de performance e 100 de acessibilidade. Nesta rodada não enviei lead nenhum.
+
+---
+
+# Complemento 2 (molécula resolvida)
+
+> Revisar antes de postar. NÃO postado.
+
+---
+
+Oi Mari, a molécula saiu. A chave foi entender que ela não é um desenho separado: é a partícula real do estudo, do painel D daquela mesma figura que a gente já usa, recortada e tratada.
+
+Foi isso que eu fiz. Recortei a partícula inteira do canto superior esquerdo do painel D, com máscara limpa e fundo transparente, sem cortar a borda dela. Em volta coloquei três microesferas soltas do painel B, que é o mesmo material do painel D. De propósito não usei nada dos painéis A e C, porque esses dois são o produto comparador e misturar os dois numa imagem só seria dizer uma coisa que o estudo não diz.
+
+O acabamento é colorização em cima da foto, nada redesenhado. A rampa vai do bronze escuro ao creme, no mesmo tom do amarelo novo da página, e ela para antes do branco puro de propósito: sem branco puro não tem como aparecer reflexo, que era justamente o que dava a cara de vidro. Também não tem transparência nenhuma. A textura de placas continua com o relevo da micrografia, então ela lê como partícula de verdade, com volume.
+
+Apliquei nos dois lugares que você marcou: o bloco da tecnologia Lattice-Pore e o bloco de resposta contínua. Ajustei tamanho e alinhamento nos dois, e conferi em desktop, tablet e celular. No bloco de resposta contínua também baixei o amarelo do fundo, que estava forte e apagava a textura.
+
+Uma coisa importante: as seções científicas não mudaram nada. A figura do artigo continua em preto e branco nos dois lugares onde ela é citada, com a letra do painel, a barra de escala e a referência. A colorização dourada existe só na peça decorativa, e o texto alternativo dela diz que é representação a partir de micrografia, sem afirmar concentração nem produto.
+
+Mandei os prints de antes e depois. O Lighthouse não caiu, continua em 100 de acessibilidade e subiu de 91 para 92 em performance. Console e rede limpos. Nesta rodada não enviei lead nenhum.

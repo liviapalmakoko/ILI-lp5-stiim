@@ -641,3 +641,130 @@ segunda ocorrência e para o bloco de resposta contínua.
 - **Push só na branch de trabalho** `ajustes-stiim-86ah19vv5`. `main` não foi tocada.
 - **Nada foi descartado.** Os assets antigos, inclusive `aplicacao-rosto-frontal.webp`, que
   saiu da página, continuam no repositório.
+
+---
+
+# Adendo 2 · a molécula era o painel D (09/09/2026, à tarde)
+
+A pista que faltava veio da Gabs: **a molécula do PDF não é um asset separado, é a partícula
+real do painel D da própria `g004`, recortada.** Confirmei olhando a miniatura ao lado do
+painel: a superfície de placas bate. Com isso o bloqueio 1 caiu, e a peça foi construída em
+cima da micrografia, sem gerar nem redesenhar nada.
+
+## De onde saiu cada pedaço
+
+| Peça | Origem | Detalhe |
+|---|---|---|
+| Partícula principal | `~/stiim-fotos/biomedicines-14-01447-g004.png`, **painel D**, esfera do canto superior esquerdo | Silhueta de 528 × 573 px, a mais inteira do painel, com a superfície de placas visível |
+| 3 microesferas satélite | **painel B** da mesma figura | Microesferas completas, sem tocar a borda do painel |
+
+**Por que os satélites vieram do painel B e não do A ou do C.** Painéis A e C são a coluna da
+esquerda, que é o **produto comparador**; B e D são a mesma coluna da direita, o mesmo
+material da partícula principal. Pôr lasca do A em volta de uma partícula do D misturaria os
+dois materiais numa imagem só, e a página inteira foi construída para não fazer esse tipo de
+afirmação. Do B saem microesferas inteiras do mesmo material, que é o que a composição pede.
+
+## Como o recorte foi feito
+
+Segmentação por limiar sobre o painel (a tarja preta da escala é detectada e descartada
+antes), rotulação de componentes conexos, e seleção do componente que não toca nenhuma borda
+e é o mais circular perto do canto superior esquerdo. A máscara passa por fechamento e
+abertura morfológicos com elemento em disco, preenchimento de buracos, filtro de mediana e um
+desfoque de 1,6 px só na borda do alfa. Conferi que **o alfa é zero nas quatro bordas do
+recorte**, ou seja, a esfera não foi cortada em nenhum lado. Fundo transparente de verdade,
+sem halo do fundo escuro do MEV.
+
+## O tratamento
+
+Colorização em cima da foto, **sem redesenhar**: a luminância real da micrografia é mapeada
+por uma rampa champagne, do bronze escuro `#634F21` ao creme `#F7EAC8`, coerente com os
+tokens novos da LP (`--gold-field #f6e6bd`, `--cream #faf3e2`, `--gold-ink #5a4708`).
+
+Três decisões que garantem o "sem aspecto de vidro" que o cliente pediu:
+
+- **A rampa termina em `#F7EAC8`, não em branco.** Sem branco puro não há como aparecer
+  reflexo especular, que é o que dá leitura de vidro ou plástico polido.
+- **O piso não vai a preto** (`#634F21`), então a partícula continua lendo como volume, não
+  como silhueta recortada.
+- **Nenhuma transparência**: a alfa é binária suavizada só na borda; o interior é opaco.
+
+O contraste da textura foi preservado com um ganho suave de 1,12 em torno do meio-tom, depois
+de normalizar entre os percentis 4 e 98 da própria partícula. As placas da superfície
+continuam com o relevo da micrografia.
+
+## Arquivos
+
+| Arquivo | Tamanho |
+|---|---|
+| `assets/img/lattice-pore-particula-dourada-1600.webp` | 1600 × 1600, 79 KB |
+| `assets/img/lattice-pore-particula-dourada-1600.png` | 1600 × 1600, 922 KB |
+| `assets/img/lattice-pore-particula-dourada-800.webp` | 800 × 800, 32 KB |
+| `assets/img/lattice-pore-particula-dourada-800.png` | 800 × 800, 300 KB |
+
+Todos com fundo transparente. A página carrega os WebP; os PNG ficam versionados como fonte
+para quem precisar do arquivo sem perda. A composição é quadrada e os satélites ficam dentro
+dos 78% centrais, então nenhum corte 4:5 os come.
+
+## Onde foi aplicada
+
+| Lugar | Antes | Agora |
+|---|---|---|
+| Bloco Tecnologia Lattice-Pore | `stiim-particula-ilustracao-v2.webp` (esfera de vidro dourada) | `lattice-pore-particula-dourada-1600.webp` |
+| Bloco de resposta contínua (mecanismo de ação) | `stiim-particula-ilustracao-v1.webp` | `lattice-pore-particula-dourada-800.webp` |
+
+Alt nas duas: **"Partícula STiiM com acabamento dourado, representação a partir de
+micrografia"**. Não afirma concentração, nem produto além do que a fonte sustenta.
+
+Os dois assets antigos continuam no repositório, sem uso na página. Não apaguei nenhum.
+
+### Ajustes de tamanho, alinhamento e integração
+
+- **Bloco Tecnologia:** o card virou quadrado com `object-fit: contain`, para os satélites não
+  serem cortados, e ganhou um campo champagne radial no lugar do cinza chapado, no mesmo tom
+  do amarelo novo da seção de evidências, com borda de 1 px e sombra suave. Antes o card era
+  `4/5` com `cover`.
+- **Bloco de resposta contínua:** a partícula saiu de `left: 40%` para `left: 51%`, porque
+  metade dela ficava atrás do painel de vidro. O halo amarelo do campo foi reduzido de `.72`
+  para `.46` de opacidade, e o brilho interno de `.45` para `.30`: o amarelo forte apagava a
+  textura de placas. O `brightness(1.01)` artificial saiu, a partícula já tem volume próprio.
+- **Breakpoints:** em `≤1020px` a partícula recua para `left: 42%` a 236 px e em `≤780px` para
+  `left: 26%` a 208 px, porque a coluna de cards encosta mais à esquerda e ela ficaria por
+  baixo. Em `≤520px` o campo já é centralizado e a partícula vai a 186 px (era 159 px).
+  Conferido em 1440, 1000, 768 e 390.
+
+## O que NÃO mudou
+
+**As seções científicas continuam exatamente iguais.** A `g004` segue em preto e branco nos
+dois lugares onde é citada como micrografia: o comparativo Produto R × STIIM (painéis A e B) e
+o bloco de morfologia por ampliação (painéis B e D), com letra do painel, barra de escala,
+etiqueta do laboratório e a referência com DOI. Nada foi colorizado ali. A colorização
+dourada existe só na peça decorativa, e o alt dela diz que é representação a partir de
+micrografia.
+
+## Validação
+
+- Console e rede limpos em 1440, 768 e 390: zero erro, zero requisição falhada, zero 404.
+- Grep no fonte e no DOM renderizado: `corporal`, `corporais`, `corpora`, `toxina`, `botul`,
+  `Produto A` e `semelhante a areia` seguem em **zero**.
+- **Lighthouse não caiu:** Performance **91 → 92**, Acessibilidade **100**, Boas práticas
+  **100**, SEO **100**. LCP 3,3 s, TBT 60 ms, CLS 0. Peso total 472 → 474 KB (a peça nova pesa
+  79 KB e substitui uma de 328 KB, mas entra também no bloco do mecanismo, que antes usava
+  outra de 321 KB — no líquido a página ficou mais leve nesses dois blocos).
+- Antes e depois em `docs/shots/molecula/`:
+  `tecnologia-antes-depois-1440.jpg`, `resposta-continua-antes-depois-1440.jpg` e
+  `antes-depois-390.jpg`. Shots de seção e de página inteira atualizados em
+  `docs/shots/ajustes-finais/`.
+
+## Segurança (desta rodada)
+
+- **Nenhum segredo novo.** A rodada gerou imagem a partir de um arquivo que já estava na
+  caixa e mexeu em HTML e CSS. Nenhuma credencial entrou no código; o `.env` não foi criado
+  nem lido. O token do RD Station segue igual e não foi tocado.
+- **Endpoints intocados.** Formulário, endpoint do RD Station e scripts de tracking não foram
+  alterados. **Nenhum lead novo foi enviado.**
+- **Fronteira de rede respeitada.** Trabalho local em `127.0.0.1:8137`. Nada tentou alcançar
+  `10.60.x`.
+- **Zero escrita no ClickUp e no Drive.**
+- **Push só na branch de trabalho** `ajustes-stiim-86ah19vv5`. `main` não foi tocada.
+- **Nada foi descartado:** `stiim-particula-ilustracao-v1.webp` e `-v2.webp` continuam
+  versionados, só saíram da página.

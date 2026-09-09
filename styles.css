@@ -163,6 +163,12 @@ p{margin-bottom:20px}
 .technology-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:76px;align-items:center}
 .identity-card{margin:0;overflow:hidden;border-radius:var(--radius);background:#eee}
 .identity-card img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center}
+/* 86ah19vv5: card da particula dourada. A imagem e recortada com fundo transparente, entao
+   o card deixa de ser uma caixa cinza e vira um campo champagne suave, no mesmo tom do
+   amarelo novo da secao de evidencias. contain em vez de cover para nao cortar as
+   microesferas satelites, e padding para a particula nao encostar na borda. */
+.identity-card--particula{display:grid;place-items:center;padding:3%;border:1px solid rgba(154,112,0,.13);background:radial-gradient(66% 58% at 50% 47%,#fbf4e4 0%,#f6efdf 42%,var(--surface) 76%)}
+.identity-card--particula img{aspect-ratio:1/1;object-fit:contain;filter:drop-shadow(0 26px 34px rgba(122,95,20,.16))}
 .technology-copy>p:not(.eyebrow){max-width:650px;color:#555;font-size:19px}
 .feature-list{margin:38px 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}
 .feature-list li{display:grid;grid-template-columns:42px 1fr;gap:18px;padding:19px 0;border-bottom:1px solid var(--line);font-size:17px;line-height:1.45}
@@ -238,15 +244,16 @@ p{margin-bottom:20px}
 .mechanism-expansion{position:relative;display:block;margin-top:44px}
 .mechanism-visual{position:relative;grid-area:visual;min-height:500px;overflow:visible;isolation:isolate}
 .mechanism-field{position:absolute;inset:0;overflow:hidden}
-.mechanism-field::before{content:"";position:absolute;top:50%;left:40%;width:430px;height:430px;border-radius:50%;background:radial-gradient(circle at 67% 50%,rgba(255,202,8,.72),rgba(255,202,8,.34) 43%,rgba(255,227,111,.12) 62%,transparent 75%);filter:blur(15px);transform:translate(-50%,-50%)}
+.mechanism-field::before{content:"";position:absolute;top:50%;left:40%;width:430px;height:430px;border-radius:50%;background:radial-gradient(circle at 67% 50%,rgba(255,202,8,.46),rgba(255,202,8,.22) 43%,rgba(255,227,111,.08) 62%,transparent 75%);filter:blur(15px);transform:translate(-50%,-50%)}
 /* 86ah19vv5: "centralizar, esta muito grudado com a borda" - o painel e o texto saem da
    borda esquerda do bloco. */
 .mechanism-field::after{content:"";position:absolute;top:50%;left:3%;z-index:3;width:38%;height:450px;border:1px solid rgba(255,255,255,.7);border-radius:var(--radius);background:rgba(255,255,255,.5);box-shadow:inset 1px 1px rgba(255,255,255,.9),0 18px 48px rgba(103,77,0,.045);backdrop-filter:blur(18px) saturate(112%);-webkit-backdrop-filter:blur(18px) saturate(112%);transform:translateY(-50%);pointer-events:none}
 .mechanism-field i{position:absolute;top:50%;left:40%;border-radius:50%;transform:translate(-50%,-50%)}
 .mechanism-field i:nth-child(1){width:510px;height:510px;border:1px dashed rgba(168,120,0,.42)}
 .mechanism-field i:nth-child(2){width:450px;height:450px;background:repeating-conic-gradient(from -90deg,rgba(168,120,0,.52) 0 1.35deg,transparent 1.35deg 3.25deg);clip-path:inset(0 0 0 50%);-webkit-mask:radial-gradient(circle,transparent 0 58%,#000 58.5% 71%,transparent 71.5%);mask:radial-gradient(circle,transparent 0 58%,#000 58.5% 71%,transparent 71.5%)}
-.mechanism-field i:nth-child(3){width:390px;height:390px;background:radial-gradient(circle at 62% 50%,rgba(255,202,8,.45),rgba(255,202,8,.12) 58%,transparent 72%);clip-path:inset(0 0 0 48%);filter:blur(9px)}
-.mechanism-molecule{position:absolute;top:50%;left:40%;z-index:2;width:282px;height:282px;object-fit:contain;filter:drop-shadow(0 22px 34px rgba(115,85,0,.18)) brightness(1.01);transform:translate(-50%,-50%);animation:mechanism-molecule-float 6s ease-in-out infinite alternate}
+.mechanism-field i:nth-child(3){width:390px;height:390px;background:radial-gradient(circle at 62% 50%,rgba(255,202,8,.3),rgba(255,202,8,.08) 58%,transparent 72%);clip-path:inset(0 0 0 48%);filter:blur(9px)}
+/* 86ah19vv5: a particula dourada ja tem volume proprio; o brightness artificial sai. */
+.mechanism-molecule{position:absolute;top:50%;left:51%;z-index:4;width:286px;height:286px;object-fit:contain;filter:drop-shadow(0 22px 32px rgba(115,85,0,.16));transform:translate(-50%,-50%);animation:mechanism-molecule-float 6s ease-in-out infinite alternate}
 .mechanism-field>span{display:none}
 /* 86ah19vv5: "centralizar, esta muito grudado com a borda" - a coluna de cards sai de
    right:12% para uma margem folgada e ganha respiro vertical entre os tres. */
@@ -565,6 +572,8 @@ p{margin-bottom:20px}
   .particle-distribution{grid-template-columns:1fr;gap:20px}
   .mechanism-visual{min-height:460px}
   .mechanism-glass-tabs{right:3%;width:min(40%,300px)}
+  /* 86ah19vv5: com a coluna de cards mais a esquerda, a particula recua para nao ficar por baixo */
+  .mechanism-molecule{left:42%;width:236px;height:236px}
   .mechanism-glass-stage{min-height:105px;padding:22px 58px 18px 18px}
   .area-list .area-copy{grid-template-columns:1fr;gap:2px}
   .application-insights{grid-template-columns:1fr}
@@ -635,6 +644,7 @@ p{margin-bottom:20px}
   .mechanism-expansion{display:grid;grid-template-columns:1fr;grid-template-areas:"visual" "details";gap:30px;margin-top:32px}
   .mechanism-visual{min-height:430px}
   .mechanism-glass-tabs{right:22px;width:min(62%,330px)}
+  .mechanism-molecule{left:26%;width:208px;height:208px}
   .mechanism-details{position:relative;top:auto;left:auto;width:100%;min-height:320px;align-items:flex-start;transform:none}
   .mechanism-details h3{font-size:42px}
   .mechanism-gene{gap:8px}
@@ -741,7 +751,7 @@ p{margin-bottom:20px}
   .mechanism-field i:nth-child(1){width:220px;height:220px}
   .mechanism-field i:nth-child(2){width:186px;height:186px;clip-path:none}
   .mechanism-field i:nth-child(3){width:154px;height:154px;clip-path:none}
-  .mechanism-molecule{left:50%;width:159px;height:159px}
+  .mechanism-molecule{left:50%;width:186px;height:186px}
   .mechanism-field>span{display:none}
   .mechanism-glass-tabs{position:relative;top:auto;right:auto;bottom:auto;left:auto;width:100%;gap:8px;transform:none}
   .mechanism-glass-tabs::before{inset:-10px;border-radius:var(--radius)}
