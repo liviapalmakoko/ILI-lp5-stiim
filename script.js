@@ -57,6 +57,30 @@
     });
   }
 
+  /* 86ah19vv5 (acessibilidade): no mobile os dois blocos de abas viram sanfona e os
+     paineis sao movidos para DENTRO do container. Um role="tablist" so aceita filhos
+     role="tab", entao a arvore ficava invalida (o Lighthouse acusava aria-required-children).
+     Este helper troca o padrao ARIA junto com o layout: abas no desktop, sanfona no mobile. */
+  function aplicarPadraoAria(container, gatilhos, paineis, ehSanfona) {
+    if (!container) return;
+    if (ehSanfona) {
+      container.setAttribute('role', 'group');
+      gatilhos.forEach(function (gatilho) {
+        gatilho.removeAttribute('role');
+        gatilho.removeAttribute('aria-selected');
+        gatilho.setAttribute('tabindex', '0');
+      });
+      paineis.forEach(function (painel) { painel.setAttribute('role', 'region'); });
+    } else {
+      container.setAttribute('role', 'tablist');
+      gatilhos.forEach(function (gatilho) {
+        gatilho.setAttribute('role', 'tab');
+        gatilho.removeAttribute('aria-expanded');
+      });
+      paineis.forEach(function (painel) { painel.setAttribute('role', 'tabpanel'); });
+    }
+  }
+
   /* Diagrama glass interativo do mecanismo de ação. */
   var mechanismExpansion = document.querySelector('[data-mechanism-expansion]');
 
@@ -70,12 +94,16 @@
     var mechanismAutoplayAllowed = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function activateMechanism(index, moveFocus) {
+      var mechanismSanfona = mechanismMobileQuery.matches;
       mechanismTabs.forEach(function (tab) {
         var active = Number(tab.getAttribute('data-mechanism-index')) === index;
-        tab.setAttribute('aria-selected', active ? 'true' : 'false');
-        tab.setAttribute('tabindex', active ? '0' : '-1');
-        if (mechanismMobileQuery.matches) tab.setAttribute('aria-expanded', active ? 'true' : 'false');
-        else tab.removeAttribute('aria-expanded');
+        if (mechanismSanfona) {
+          tab.setAttribute('aria-expanded', active ? 'true' : 'false');
+          tab.setAttribute('tabindex', '0');
+        } else {
+          tab.setAttribute('aria-selected', active ? 'true' : 'false');
+          tab.setAttribute('tabindex', active ? '0' : '-1');
+        }
       });
 
       mechanismPanels.forEach(function (panel) {
@@ -101,7 +129,7 @@
 
       mechanismTimer = window.setInterval(function () {
         var activeTab = mechanismTabs.find(function (tab) {
-          return tab.getAttribute('aria-selected') === 'true';
+          return tab.getAttribute('aria-selected') === 'true' || tab.getAttribute('aria-expanded') === 'true';
         });
         var activeIndex = activeTab ? Number(activeTab.getAttribute('data-mechanism-index')) : 0;
         activateMechanism((activeIndex + 1) % mechanismTabs.length, false);
@@ -110,9 +138,11 @@
 
     function syncMechanismLayout() {
       var activeTab = mechanismTabs.find(function (tab) {
-        return tab.getAttribute('aria-selected') === 'true';
+        return tab.getAttribute('aria-selected') === 'true' || tab.getAttribute('aria-expanded') === 'true';
       });
       var activeIndex = activeTab ? Number(activeTab.getAttribute('data-mechanism-index')) : 0;
+
+      aplicarPadraoAria(mechanismTabsContainer, mechanismTabs, mechanismPanels, mechanismMobileQuery.matches);
 
       if (mechanismMobileQuery.matches && mechanismTabsContainer) {
         mechanismPanels.forEach(function (panel, index) {
@@ -314,8 +344,11 @@
       var activePosition = Number(tab.getAttribute('data-timeline-position'));
       timelineNav.style.setProperty('--timeline-index', activePosition);
       timelineTabs.forEach(function (item, itemIndex) {
-        item.setAttribute('aria-selected', itemIndex === index ? 'true' : 'false');
-        item.setAttribute('tabindex', itemIndex === index ? '0' : '-1');
+        if (timelineMobileQuery.matches) item.setAttribute('tabindex', '0');
+        else {
+          item.setAttribute('aria-selected', itemIndex === index ? 'true' : 'false');
+          item.setAttribute('tabindex', itemIndex === index ? '0' : '-1');
+        }
         item.classList.toggle('is-past', Number(item.getAttribute('data-timeline-position')) < activePosition);
       });
       timelineMilestones.forEach(function (milestone) {
@@ -331,12 +364,16 @@
       var activePosition = Number(timelineTabs[index].getAttribute('data-timeline-position'));
       timelineNav.style.setProperty('--timeline-index', activePosition);
 
+      var timelineSanfona = timelineMobileQuery.matches;
       timelineTabs.forEach(function (tab, tabIndex) {
         var active = tabIndex === index;
-        tab.setAttribute('aria-selected', active ? 'true' : 'false');
-        tab.setAttribute('tabindex', active ? '0' : '-1');
-        if (timelineMobileQuery.matches) tab.setAttribute('aria-expanded', active ? 'true' : 'false');
-        else tab.removeAttribute('aria-expanded');
+        if (timelineSanfona) {
+          tab.setAttribute('aria-expanded', active ? 'true' : 'false');
+          tab.setAttribute('tabindex', '0');
+        } else {
+          tab.setAttribute('aria-selected', active ? 'true' : 'false');
+          tab.setAttribute('tabindex', active ? '0' : '-1');
+        }
         tab.classList.toggle('is-past', Number(tab.getAttribute('data-timeline-position')) < activePosition);
       });
 
@@ -356,9 +393,11 @@
 
     function syncTimelineLayout() {
       var activeTab = timelineTabs.find(function (tab) {
-        return tab.getAttribute('aria-selected') === 'true';
+        return tab.getAttribute('aria-selected') === 'true' || tab.getAttribute('aria-expanded') === 'true';
       });
       var activeIndex = activeTab ? timelineTabs.indexOf(activeTab) : 0;
+
+      aplicarPadraoAria(timelineNav, timelineTabs, timelinePanels, timelineMobileQuery.matches);
 
       if (timelineMobileQuery.matches && timelineNav) {
         timelinePanels.forEach(function (panel, index) {
