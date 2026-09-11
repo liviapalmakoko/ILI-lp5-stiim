@@ -1,0 +1,65 @@
+{
+  "console": [],
+  "failed": [],
+  "overflow": {
+    "390": {
+      "scrollWidth": 390,
+      "clientWidth": 390
+    },
+    "768": {
+      "scrollWidth": 768,
+      "clientWidth": 768
+    },
+    "1440": {
+      "scrollWidth": 1440,
+      "clientWidth": 1440
+    }
+  },
+  "shots": [
+    {
+      "w": 1440,
+      "s": ".identity-card--particula",
+      "file": "docs/shots/r11/stiim-_identity_card_particula-1440.png"
+    },
+    {
+      "w": 1440,
+      "s": "[data-mechanism-expansion]",
+      "file": "docs/shots/r11/stiim-_data_mechanism_expansion_-1440.png"
+    },
+    {
+      "w": 1440,
+      "s": ".evidence-timeline",
+      "file": "docs/shots/r11/stiim-_evidence_timeline-1440.png"
+    },
+    {
+      "w": 768,
+      "s": ".identity-card--particula",
+      "file": "docs/shots/r11/stiim-_identity_card_particula-768.png"
+    },
+    {
+      "w": 768,
+      "s": "[data-mechanism-expansion]",
+      "file": "docs/shots/r11/stiim-_data_mechanism_expansion_-768.png"
+    },
+    {
+      "w": 768,
+      "s": ".evidence-timeline",
+      "file": "docs/shots/r11/stiim-_evidence_timeline-768.png"
+    },
+    {
+      "w": 390,
+      "s": ".identity-card--particula",
+      "file": "docs/shots/r11/stiim-_identity_card_particula-390.png"
+    },
+    {
+      "w": 390,
+      "s": "[data-mechanism-expansion]",
+      "file": "docs/shots/r11/stiim-_data_mechanism_expansion_-390.png"
+    },
+    {
+      "w": 390,
+      "s": ".evidence-timeline",
+      "file": "docs/shots/r11/stiim-_evidence_timeline-390.png"
+    }
+  ]
+}
