@@ -1,0 +1,198 @@
+1440  PASSA  RESP overflow horizontal zero  scrollWidth=1440 clientWidth=1440
+1440  PASSA  HERO x esquerdo igual (eyebrow, h1, paragrafo, botao, cards, logo)  xs=130.0,130.0,130.0,130.0,130.0,130.0 spread=0.00
+1440  PASSA  HERO centro visivel das caixas = centro da coluna (tol 8px)  img=1040.0 coluna=1040.0 diff=-0.0
+1440  PASSA  HERO gaps eyebrow>h1>lead>CTA = 20/24/32 (escala)  gaps=20.0/24.0/32.0
+1440  PASSA  HERO bloco centrado com vies para cima: CTA->cards = espaco acima + 48 (tol 1px), >= 40  acima=81.0 CTA->cards=130.0
+1440  PASSA  HERO caixas nao invadem o texto (alfa)  imgL=720 copyR=770
+1440  INFO   HERO imagem das caixas com resolucao 2x (asset pendente, ver relatorio)  natural=650x677 renderizada=619 precisa>=1239
+1440  PASSA  CTA2 texto exato "Entenda a tecnologia exclusiva e patenteada →"  "Entenda a tecnologia exclusiva e patenteada→"
+1440  PASSA  CTA2 seta na mesma linha da ultima palavra  tailTop=614.4 arrowTop=613.4
+1440  PASSA  CTA2 sem overflow (dentro da viewport)  linkR=743 vw=1440
+1440  PASSA  CARDS mesma altura e mesmo padding  h=93.9/93.9/93.9 pad=24px 32px 24px 32px
+1440  PASSA  CARDS mesma distancia entre as 2 linhas (mesmo corpo e entrelinha)  gap=0.0/0.0/0.0 fs=17px/17px
+1440  PASSA  CARDS 1a linha dos 3 na mesma baseline  baseline1=828.1/828.1/828.1
+1440  PASSA  CARDS textos e pesos do PDF  400/700 700/400 700/400
+1440  PASSA  TEC faixa da comparacao com fundo proprio (creme) e grafico FORA da faixa  bg=rgb(250, 243, 226) graficoDentro=false
+1440  PASSA  TEC respiro faixa -> card do grafico >= 40px  gap=64.0
+1440  PASSA  TEC respiro bloco Regularidade -> faixa >= 40px  gap=64.0
+1440  PASSA  TEC card da particula alinhado ao topo e a base da coluna de texto (tol 2px)  card=1949..2619 texto=1949..2619
+1440  PASSA  TEC titulo da comparacao alinhado ao topo das micrografias (tol 2px)  head=2747.3 fig=2747.3
+1440  PASSA  TEC referencia Dal Col/Matte logo abaixo das imagens  gap=34.0
+1440  PASSA  CMP 2 cards mesma largura e altura  R=409x576 S=409x576
+1440  PASSA  CMP imagens alinhadas e titulos na mesma baseline  imgT=2748.3/2748.3 strongT=3224.1/3224.1
+1440  PASSA  CMP paddings iguais nas legendas  24px 24px 24px 24px
+1440  PASSA  CMP STIIM destacado (fundo amarelo palido + borda dourada), Produto R neutro  bgS=rgb(255, 246, 207) bgR=rgba(0, 0, 0, 0)
+1440  PASSA  CMP contraste AA no card destacado (>=4.5)  titulo=14.47 legenda=8.26
+1440  PASSA  MOL centro da esfera = centro do circulo, estado 1 (tol 2px)  dx=0.00 dy=0.00 raios-aro=0.00 molW=286.0000305175781
+1440  PASSA  MOL centro da esfera = centro do circulo, estado 2 (tol 2px)  dx=0.00 dy=0.00 raios-aro=0.00 molW=286.0000305175781
+1440  PASSA  MOL centro da esfera = centro do circulo, estado 3 (tol 2px)  dx=0.00 dy=0.00 raios-aro=0.00 molW=286.0000305175781
+1440  PASSA  MOL esfera nao cobre o texto do painel  esferaL=538 textoR=506
+1440  PASSA  MODELO cabeca inteira com folga >= 16px acima (asset v2, object-position top)  folga=31.3px pos=100% 0% src=aplicacao-modelo-va-v2.webp
+1440  PASSA  MODELO sem esticar (cover) e janela visivel contem modelo + lettering  janela=0..1200 conteudo=375..1136 (visivel 1200x1500)
+1440  PASSA  MODELO bloco da imagem com a altura da coluna de texto (tol 2px)  card=3359..4021 texto=3359..4021
+1440  PASSA  NAT paragrafo exato do PDF (negritos)  
+1440  PASSA  NAT alinhado a esquerda, negrito 700, pilares mantidos  align=start b=700,700,700,700,700 pilares=Prevenção · Restauração · Manutenção
+1440  PASSA  NAT pilares "Prevenção · Restauração · Manutenção"  Prevenção · Restauração · Manutenção
+1440  PASSA  NAT coluna de texto ocupa >= 60% da altura das imagens e sobras iguais (tol 4px)  texto=404 imagens=591 (68%) sobras=94/94
+1440  PASSA  PAD gap eyebrow->titulo igual em todas as secoes (tol 1px)  g=20.0/20.0/20.0/20.0/20.0/20.0
+1440  PASSA  PAD gap titulo->texto igual em todas as secoes (tol 1px)  g=24.0/24.0/24.0/24.0/24.0/24.0
+1440  PASSA  RESP imagens (caixas, particula, micrografias) inteiras na largura  todas dentro
+1280  PASSA  RESP overflow horizontal zero  scrollWidth=1280 clientWidth=1280
+1280  PASSA  HERO x esquerdo igual (eyebrow, h1, paragrafo, botao, cards, logo)  xs=50.0,50.0,50.0,50.0,50.0,50.0 spread=0.00
+1280  PASSA  HERO centro visivel das caixas = centro da coluna (tol 8px)  img=960.0 coluna=960.0 diff=0.0
+1280  PASSA  HERO gaps eyebrow>h1>lead>CTA = 20/24/32 (escala)  gaps=20.0/24.0/32.0
+1280  PASSA  HERO bloco centrado com vies para cima: CTA->cards = espaco acima + 48 (tol 1px), >= 40  acima=89.7 CTA->cards=138.7
+1280  PASSA  HERO caixas nao invadem o texto (alfa)  imgL=676 copyR=690
+1280  INFO   HERO imagem das caixas com resolucao 2x (asset pendente, ver relatorio)  natural=650x677 renderizada=550 precisa>=1101
+1280  PASSA  CTA2 texto exato "Entenda a tecnologia exclusiva e patenteada →"  "Entenda a tecnologia exclusiva e patenteada→"
+1280  PASSA  CTA2 seta na mesma linha da ultima palavra  tailTop=610.2 arrowTop=609.2
+1280  PASSA  CTA2 sem overflow (dentro da viewport)  linkR=663 vw=1280
+1280  PASSA  CARDS mesma altura e mesmo padding  h=89.5/89.5/89.5 pad=24px 32px 24px 32px
+1280  PASSA  CARDS mesma distancia entre as 2 linhas (mesmo corpo e entrelinha)  gap=0.0/0.0/0.0 fs=15.36px/15.36px
+1280  PASSA  CARDS 1a linha dos 3 na mesma baseline  baseline1=830.3/830.3/830.3
+1280  PASSA  CARDS textos e pesos do PDF  400/700 700/400 700/400
+1280  PASSA  TEC faixa da comparacao com fundo proprio (creme) e grafico FORA da faixa  bg=rgb(250, 243, 226) graficoDentro=false
+1280  PASSA  TEC respiro faixa -> card do grafico >= 40px  gap=64.0
+1280  PASSA  TEC respiro bloco Regularidade -> faixa >= 40px  gap=64.0
+1280  PASSA  TEC card da particula alinhado ao topo e a base da coluna de texto (tol 2px)  card=1949..2601 texto=1949..2601
+1280  PASSA  TEC titulo da comparacao alinhado ao topo das micrografias (tol 2px)  head=2729.1 fig=2729.1
+1280  PASSA  TEC referencia Dal Col/Matte logo abaixo das imagens  gap=34.0
+1280  PASSA  CMP 2 cards mesma largura e altura  R=409x576 S=409x576
+1280  PASSA  CMP imagens alinhadas e titulos na mesma baseline  imgT=2730.1/2730.1 strongT=3205.9/3205.9
+1280  PASSA  CMP paddings iguais nas legendas  24px 24px 24px 24px
+1280  PASSA  CMP STIIM destacado (fundo amarelo palido + borda dourada), Produto R neutro  bgS=rgb(255, 246, 207) bgR=rgba(0, 0, 0, 0)
+1280  PASSA  CMP contraste AA no card destacado (>=4.5)  titulo=14.47 legenda=8.26
+1280  PASSA  MOL centro da esfera = centro do circulo, estado 1 (tol 2px)  dx=0.00 dy=0.00 raios-aro=0.00 molW=286.0000305175781
+1280  PASSA  MOL centro da esfera = centro do circulo, estado 2 (tol 2px)  dx=0.00 dy=0.00 raios-aro=0.00 molW=286.0000305175781
+1280  PASSA  MOL centro da esfera = centro do circulo, estado 3 (tol 2px)  dx=0.00 dy=0.00 raios-aro=0.00 molW=286.0000305175781
+1280  PASSA  MOL esfera nao cobre o texto do painel  esferaL=458 textoR=426
+1280  PASSA  MODELO cabeca inteira com folga >= 16px acima (asset v2, object-position top)  folga=31.3px pos=100% 0% src=aplicacao-modelo-va-v2.webp
+1280  PASSA  MODELO sem esticar (cover) e janela visivel contem modelo + lettering  janela=0..1200 conteudo=375..1136 (visivel 1200x1500)
+1280  PASSA  MODELO bloco da imagem com a altura da coluna de texto (tol 2px)  card=119..781 texto=119..781
+1280  PASSA  NAT paragrafo exato do PDF (negritos)  
+1280  PASSA  NAT alinhado a esquerda, negrito 700, pilares mantidos  align=start b=700,700,700,700,700 pilares=Prevenção · Restauração · Manutenção
+1280  PASSA  NAT pilares "Prevenção · Restauração · Manutenção"  Prevenção · Restauração · Manutenção
+1280  PASSA  NAT coluna de texto ocupa >= 60% da altura das imagens e sobras iguais (tol 4px)  texto=398 imagens=591 (67%) sobras=97/97
+1280  PASSA  PAD gap eyebrow->titulo igual em todas as secoes (tol 1px)  g=20.0/20.0/20.0/20.0/20.0/20.0
+1280  PASSA  PAD gap titulo->texto igual em todas as secoes (tol 1px)  g=24.0/24.0/24.0/24.0/24.0/24.0
+1280  PASSA  RESP imagens (caixas, particula, micrografias) inteiras na largura  todas dentro
+1024  PASSA  RESP overflow horizontal zero  scrollWidth=1024 clientWidth=1024
+1024  PASSA  HERO x esquerdo igual (eyebrow, h1, paragrafo, botao, cards, logo)  xs=24.0,24.0,24.0,24.0,24.0,24.0 spread=0.00
+1024  PASSA  HERO centro visivel das caixas = centro da coluna (tol 8px)  img=832.0 coluna=832.0 diff=0.0
+1024  PASSA  HERO gaps eyebrow>h1>lead>CTA = 20/24/32 (escala)  gaps=20.0/24.0/32.0
+1024  PASSA  HERO bloco centrado com vies para cima: CTA->cards = espaco acima + 48 (tol 1px), >= 40  acima=113.5 CTA->cards=162.5
+1024  PASSA  HERO caixas nao invadem o texto (alfa)  imgL=605 copyR=664
+1024  INFO   HERO imagem das caixas com resolucao 2x (asset pendente, ver relatorio)  natural=650x677 renderizada=440 precisa>=881
+1024  PASSA  CTA2 texto exato "Entenda a tecnologia exclusiva e patenteada →"  "Entenda a tecnologia exclusiva e patenteada→"
+1024  PASSA  CTA2 seta na mesma linha da ultima palavra  tailTop=587.4 arrowTop=586.4
+1024  PASSA  CTA2 sem overflow (dentro da viewport)  linkR=637 vw=1024
+1024  PASSA  CARDS mesma altura e mesmo padding  h=88.5/88.5/88.5 pad=24px 32px 24px 32px
+1024  PASSA  CARDS mesma distancia entre as 2 linhas (mesmo corpo e entrelinha)  gap=0.0/0.0/0.0 fs=15px/15px
+1024  PASSA  CARDS 1a linha dos 3 na mesma baseline  baseline1=830.8/830.8/830.8
+1024  PASSA  CARDS textos e pesos do PDF  400/700 700/400 700/400
+1024  PASSA  TEC faixa da comparacao com fundo proprio (creme) e grafico FORA da faixa  bg=rgb(250, 243, 226) graficoDentro=false
+1024  PASSA  TEC respiro faixa -> card do grafico >= 40px  gap=64.0
+1024  PASSA  TEC respiro bloco Regularidade -> faixa >= 40px  gap=64.0
+1024  PASSA  TEC card da particula alinhado ao topo e a base da coluna de texto (tol 2px)  card=1981..2611 texto=1981..2611
+1024  PASSA  TEC titulo da comparacao alinhado ao topo das micrografias (tol 2px)  head=2739.1 fig=2739.1
+1024  PASSA  TEC referencia Dal Col/Matte logo abaixo das imagens  gap=34.0
+1024  PASSA  CMP 2 cards mesma largura e altura  R=336x495 S=336x495
+1024  PASSA  CMP imagens alinhadas e titulos na mesma baseline  imgT=2740.1/2740.1 strongT=3134.9/3134.9
+1024  PASSA  CMP paddings iguais nas legendas  24px 24px 24px 24px
+1024  PASSA  CMP STIIM destacado (fundo amarelo palido + borda dourada), Produto R neutro  bgS=rgb(255, 246, 207) bgR=rgba(0, 0, 0, 0)
+1024  PASSA  CMP contraste AA no card destacado (>=4.5)  titulo=14.47 legenda=8.26
+1024  PASSA  MOL centro da esfera = centro do circulo, estado 1 (tol 2px)  dx=0.00 dy=0.00 raios-aro=0.00 molW=286.0000305175781
+1024  PASSA  MOL centro da esfera = centro do circulo, estado 2 (tol 2px)  dx=0.00 dy=0.00 raios-aro=0.00 molW=286.0000305175781
+1024  PASSA  MOL centro da esfera = centro do circulo, estado 3 (tol 2px)  dx=0.00 dy=0.00 raios-aro=0.00 molW=286.0000305175781
+1024  PASSA  MOL esfera nao cobre o texto do painel  esferaL=344 textoR=312
+1024  PASSA  MODELO cabeca inteira com folga >= 16px acima (asset v2, object-position top)  folga=32.9px pos=100% 0% src=aplicacao-modelo-va-v2.webp
+1024  PASSA  MODELO sem esticar (cover) e janela visivel contem modelo + lettering  janela=266..1200 conteudo=375..1136 (visivel 934x1500)
+1024  PASSA  MODELO bloco da imagem com a altura da coluna de texto (tol 2px)  card=3558..4252 texto=3558..4252
+1024  PASSA  NAT paragrafo exato do PDF (negritos)  
+1024  PASSA  NAT alinhado a esquerda, negrito 700, pilares mantidos  align=start b=700,700,700,700,700 pilares=Prevenção · Restauração · Manutenção
+1024  PASSA  NAT pilares "Prevenção · Restauração · Manutenção"  Prevenção · Restauração · Manutenção
+1024  PASSA  NAT coluna de texto ocupa >= 60% da altura das imagens e sobras iguais (tol 4px)  texto=398 imagens=525 (76%) sobras=63/63
+1024  PASSA  PAD gap eyebrow->titulo igual em todas as secoes (tol 1px)  g=20.0/20.0/20.0/20.0/20.0/20.0
+1024  PASSA  PAD gap titulo->texto igual em todas as secoes (tol 1px)  g=24.0/24.0/24.0/24.0/24.0/24.0
+1024  PASSA  RESP imagens (caixas, particula, micrografias) inteiras na largura  todas dentro
+ 768  PASSA  RESP overflow horizontal zero  scrollWidth=768 clientWidth=768
+ 768  PASSA  CTA2 texto exato "Entenda a tecnologia exclusiva e patenteada →"  "Entenda a tecnologia exclusiva e patenteada→"
+ 768  PASSA  CTA2 seta na mesma linha da ultima palavra  tailTop=636.7 arrowTop=635.7
+ 768  PASSA  CTA2 sem overflow (dentro da viewport)  linkR=376 vw=768
+ 768  PASSA  CARDS mesma altura e mesmo padding  h=107.6/107.6/107.6 pad=16px 12px 16px 12px
+ 768  PASSA  CARDS mesma distancia entre as 2 linhas (mesmo corpo e entrelinha)  gap=0.0/0.0/0.0 fs=14px/14px
+ 768  PASSA  CARDS 1a linha dos 3 na mesma baseline  baseline1=735.9/735.9/735.9
+ 768  PASSA  CARDS textos e pesos do PDF  400/700 700/400 700/400
+ 768  PASSA  TEC faixa da comparacao com fundo proprio (creme) e grafico FORA da faixa  bg=rgb(250, 243, 226) graficoDentro=false
+ 768  PASSA  TEC respiro faixa -> card do grafico >= 40px  gap=48.0
+ 768  PASSA  TEC respiro bloco Regularidade -> faixa >= 40px  gap=48.0
+ 768  PASSA  TEC referencia Dal Col/Matte logo abaixo das imagens  gap=30.0
+ 768  PASSA  CMP 2 cards mesma largura (empilhados)  R=736 S=736
+ 768  PASSA  CMP paddings iguais nas legendas  24px 24px 24px 24px
+ 768  PASSA  CMP STIIM destacado (fundo amarelo palido + borda dourada), Produto R neutro  bgS=rgb(255, 246, 207) bgR=rgba(0, 0, 0, 0)
+ 768  PASSA  CMP contraste AA no card destacado (>=4.5)  titulo=14.47 legenda=8.26
+ 768  PASSA  MOL centro da esfera = centro do circulo, estado 1 (tol 2px)  dx=0.00 dy=0.00 raios-aro=0.00 molW=208
+ 768  PASSA  MOL centro da esfera = centro do circulo, estado 2 (tol 2px)  dx=0.00 dy=0.00 raios-aro=0.00 molW=208
+ 768  PASSA  MOL centro da esfera = centro do circulo, estado 3 (tol 2px)  dx=0.00 dy=0.00 raios-aro=0.00 molW=208
+ 768  PASSA  MODELO cabeca inteira com folga >= 16px acima (asset v2, object-position top)  folga=30.8px pos=100% 0% src=aplicacao-modelo-va-v2.webp
+ 768  PASSA  MODELO sem esticar (cover) e janela visivel contem modelo + lettering  janela=0..1200 conteudo=375..1136 (visivel 1200x1500)
+ 768  PASSA  NAT paragrafo exato do PDF (negritos)  
+ 768  PASSA  NAT alinhado a esquerda, negrito 700, pilares mantidos  align=start b=700,700,700,700,700 pilares=Prevenção · Restauração · Manutenção
+ 768  PASSA  NAT pilares "Prevenção · Restauração · Manutenção"  Prevenção · Restauração · Manutenção
+ 768  PASSA  PAD gap eyebrow->titulo igual em todas as secoes (tol 1px)  g=16.0/16.0/16.0/16.0/16.0/16.0
+ 768  PASSA  PAD gap titulo->texto igual em todas as secoes (tol 1px)  g=20.0/20.0/20.0/20.0/20.0/20.0
+ 768  PASSA  RESP imagens (caixas, particula, micrografias) inteiras na largura  todas dentro
+ 390  PASSA  RESP overflow horizontal zero  scrollWidth=390 clientWidth=390
+ 390  PASSA  CTA2 texto exato "Entenda a tecnologia exclusiva e patenteada →"  "Entenda a tecnologia exclusiva e patenteada→"
+ 390  PASSA  CTA2 seta na mesma linha da ultima palavra  tailTop=823.9 arrowTop=822.9
+ 390  PASSA  CTA2 sem overflow (dentro da viewport)  linkR=345 vw=390
+ 390  PASSA  CARDS mesma altura e mesmo padding  h=60.1/60.1/59.1 pad=12px 16px 12px 16px
+ 390  PASSA  CARDS mesmo corpo e entrelinha nas 2 celulas (layout em linha)  fs=13px/13px
+ 390  PASSA  CARDS textos e pesos do PDF  400/700 700/400 700/400
+ 390  PASSA  TEC faixa da comparacao com fundo proprio (creme) e grafico FORA da faixa  bg=rgb(250, 243, 226) graficoDentro=false
+ 390  PASSA  TEC respiro faixa -> card do grafico >= 40px  gap=48.0
+ 390  PASSA  TEC respiro bloco Regularidade -> faixa >= 40px  gap=48.0
+ 390  PASSA  TEC referencia Dal Col/Matte logo abaixo das imagens  gap=30.0
+ 390  PASSA  CMP 2 cards mesma largura (empilhados)  R=358 S=358
+ 390  PASSA  CMP paddings iguais nas legendas  24px 24px 24px 24px
+ 390  PASSA  CMP STIIM destacado (fundo amarelo palido + borda dourada), Produto R neutro  bgS=rgb(255, 246, 207) bgR=rgba(0, 0, 0, 0)
+ 390  PASSA  CMP contraste AA no card destacado (>=4.5)  titulo=14.47 legenda=8.26
+ 390  PASSA  MOL centro da esfera = centro do circulo, estado 1 (tol 2px)  dx=-0.00 dy=0.00 raios-aro=0.00 molW=186
+ 390  PASSA  MOL centro da esfera = centro do circulo, estado 2 (tol 2px)  dx=-0.00 dy=0.00 raios-aro=0.00 molW=186
+ 390  PASSA  MOL centro da esfera = centro do circulo, estado 3 (tol 2px)  dx=-0.00 dy=0.00 raios-aro=0.00 molW=186
+ 390  PASSA  MODELO cabeca inteira com folga >= 16px acima (asset v2, object-position top)  folga=21.2px pos=100% 0% src=aplicacao-modelo-va-v2.webp
+ 390  PASSA  MODELO sem esticar (cover) e janela visivel contem modelo + lettering  janela=0..1200 conteudo=375..1136 (visivel 1200x1500)
+ 390  PASSA  NAT paragrafo exato do PDF (negritos)  
+ 390  PASSA  NAT alinhado a esquerda, negrito 700, pilares mantidos  align=start b=700,700,700,700,700 pilares=Prevenção · Restauração · Manutenção
+ 390  PASSA  NAT pilares "Prevenção · Restauração · Manutenção"  Prevenção · Restauração · Manutenção
+ 390  PASSA  PAD gap eyebrow->titulo igual em todas as secoes (tol 1px)  g=16.0/16.0/16.0/16.0/16.0/16.0
+ 390  PASSA  PAD gap titulo->texto igual em todas as secoes (tol 1px)  g=20.0/20.0/20.0/20.0/20.0/20.0
+ 390  PASSA  RESP imagens (caixas, particula, micrografias) inteiras na largura  todas dentro
+ 360  PASSA  RESP overflow horizontal zero  scrollWidth=360 clientWidth=360
+ 360  PASSA  CTA2 texto exato "Entenda a tecnologia exclusiva e patenteada →"  "Entenda a tecnologia exclusiva e patenteada→"
+ 360  PASSA  CTA2 seta na mesma linha da ultima palavra  tailTop=781.4 arrowTop=780.4
+ 360  PASSA  CTA2 sem overflow (dentro da viewport)  linkR=330 vw=360
+ 360  PASSA  CARDS mesma altura e mesmo padding  h=55.4/55.4/54.4 pad=11px 14px 11px 14px
+ 360  PASSA  CARDS mesmo corpo e entrelinha nas 2 celulas (layout em linha)  fs=12px/12px
+ 360  PASSA  CARDS textos e pesos do PDF  400/700 700/400 700/400
+ 360  PASSA  TEC faixa da comparacao com fundo proprio (creme) e grafico FORA da faixa  bg=rgb(250, 243, 226) graficoDentro=false
+ 360  PASSA  TEC respiro faixa -> card do grafico >= 40px  gap=48.0
+ 360  PASSA  TEC respiro bloco Regularidade -> faixa >= 40px  gap=48.0
+ 360  PASSA  TEC referencia Dal Col/Matte logo abaixo das imagens  gap=30.0
+ 360  PASSA  CMP 2 cards mesma largura (empilhados)  R=328 S=328
+ 360  PASSA  CMP paddings iguais nas legendas  24px 24px 24px 24px
+ 360  PASSA  CMP STIIM destacado (fundo amarelo palido + borda dourada), Produto R neutro  bgS=rgb(255, 246, 207) bgR=rgba(0, 0, 0, 0)
+ 360  PASSA  CMP contraste AA no card destacado (>=4.5)  titulo=14.47 legenda=8.26
+ 360  PASSA  MOL centro da esfera = centro do circulo, estado 1 (tol 2px)  dx=-0.00 dy=0.00 raios-aro=0.00 molW=186
+ 360  PASSA  MOL centro da esfera = centro do circulo, estado 2 (tol 2px)  dx=-0.00 dy=0.00 raios-aro=0.00 molW=186
+ 360  PASSA  MOL centro da esfera = centro do circulo, estado 3 (tol 2px)  dx=-0.00 dy=0.00 raios-aro=0.00 molW=186
+ 360  PASSA  MODELO cabeca inteira com folga >= 16px acima (asset v2, object-position top)  folga=19.4px pos=100% 0% src=aplicacao-modelo-va-v2.webp
+ 360  PASSA  MODELO sem esticar (cover) e janela visivel contem modelo + lettering  janela=0..1200 conteudo=375..1136 (visivel 1200x1500)
+ 360  PASSA  NAT paragrafo exato do PDF (negritos)  
+ 360  PASSA  NAT alinhado a esquerda, negrito 700, pilares mantidos  align=start b=700,700,700,700,700 pilares=Prevenção · Restauração · Manutenção
+ 360  PASSA  NAT pilares "Prevenção · Restauração · Manutenção"  Prevenção · Restauração · Manutenção
+ 360  PASSA  PAD gap eyebrow->titulo igual em todas as secoes (tol 1px)  g=16.0/16.0/16.0/16.0/16.0/16.0
+ 360  PASSA  PAD gap titulo->texto igual em todas as secoes (tol 1px)  g=20.0/20.0/20.0/20.0/20.0/20.0
+ 360  PASSA  RESP imagens (caixas, particula, micrografias) inteiras na largura  todas dentro
+
+TOTAL: 196 medicoes, 0 FALHA(S)
