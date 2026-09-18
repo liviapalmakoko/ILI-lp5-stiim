@@ -13,7 +13,7 @@
   <meta name="koko-build" content="stiim-5e501bb" />
   <link rel="preload" href="assets/fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/GOTHAM-BOLD.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="styles-d59664e6.css" />
+  <link rel="stylesheet" href="styles-e703bc6f.css" />
 
   <script>window.__TRK__={brand:'ilikia',pixelId:'666277432116339',ga4Id:'',collect:'https://track-ilikia.koko.ag/collect'};</script>
   <noscript><img height="1" width="1" class="tracking-pixel" src="https://www.facebook.com/tr?id=666277432116339&amp;ev=PageView&amp;noscript=1" alt="" /></noscript>
@@ -49,24 +49,27 @@
     <div class="hero-molecules hero-molecules-right" aria-hidden="true">
       <img src="assets/img/hero-moleculas.webp" alt="" width="1254" height="1254" />
     </div>
-    <div class="hero-product">
-      <img src="assets/img/hero-caixas-limpas.webp" alt="Embalagens do bioestimulador STIIM" width="650" height="677" fetchpriority="high" />
-    </div>
     <div class="container hero-grid">
+      <!-- 18/09 (86ah19vv5): o produto passou para dentro do grid para ser centralizado na coluna
+           que sobra a direita do texto (ver .hero-product no CSS). A imagem e a mesma. -->
+      <div class="hero-product">
+        <img src="assets/img/hero-caixas-limpas.webp" alt="Embalagens do bioestimulador STIIM" width="650" height="677" fetchpriority="high" />
+      </div>
       <div class="hero-copy reveal">
         <p class="eyebrow"><span class="brand-dot"></span> Bioestimulação · Regeneração · Longevidade</p>
         <h1>Longevidade é escolha.<br /><strong>Escolha STIIM.</strong></h1>
         <p class="hero-lead">A Hidroxiapatita de Cálcio da ILIKIA desenvolvida para bioestimulação de colágeno, regeneração tecidual e melhora global da qualidade da pele.<sup>1</sup></p>
         <div class="hero-actions">
           <a href="#contato" class="button">Quero conhecer STIIM</a>
-          <a href="#tecnologia" class="text-link">Entenda a tecnologia <span aria-hidden="true">→</span></a>
+          <a href="#tecnologia" class="text-link">Entenda a tecnologia exclusiva e <span class="text-link-tail">patenteada<span aria-hidden="true">→</span></span></a>
         </div>
       </div>
     </div>
     <div class="container benefit-strip reveal" aria-label="Principais benefícios">
-      <div><strong>3ª geração</strong><span>Bioestimulador de CaHA</span></div>
-      <div><strong>Tecnologia patenteada e exclusiva</strong><span>Lattice-Pore®</span></div>
-      <div><strong>Até 24 meses</strong><span>Ação sustentada</span></div>
+      <!-- 18/09 (86ah19vv5): textos e pesos exatamente como o PDF da Mari (pag. 2). -->
+      <div><span>Hidroxiapatita de Cálcio de</span><strong>3ª Geração</strong></div>
+      <div><strong>Bioestímulo de Colágeno Rápido</strong><span>apenas 2 semanas após aplicação</span></div>
+      <div><strong>Menor Risco de Edemas</strong><span>Segurança comprovada</span></div>
     </div>
   </section>
 
@@ -186,6 +189,9 @@
       </div>
     </div>
 
+    <!-- 18/09 (86ah19vv5): a comparacao virou faixa propria (fundo creme, borda a borda) e o card do
+         grafico saiu de dentro dela: sao tres leituras (Regularidade / Produto R x STIIM / grafico). -->
+    <div class="comparison-band">
     <div class="container comparison reveal">
       <div class="comparison-heading">
         <p class="eyebrow">Morfologia da superfície</p>
@@ -207,12 +213,14 @@
         <img src="assets/img/fig4a-produtoR.webp" alt="Micrografia eletrônica de varredura do Produto R: microesferas de hidroxiapatita de cálcio com superfície e estrutura irregulares. Painel A da Figura 4, barra de escala de 50 micrômetros" width="1232" height="1368" loading="lazy" />
         <figcaption><strong>Produto R</strong><span>Superfície e estrutura irregulares</span></figcaption>
       </figure>
-      <figure>
+      <figure class="is-stiim">
         <img src="assets/img/fig4b-stiim.webp" alt="Micrografia eletrônica de varredura de STIIM: microesferas de hidroxiapatita de cálcio uniformes, com superfície regular. Painel B da Figura 4, barra de escala de 50 micrômetros" width="1236" height="1368" loading="lazy" />
         <figcaption><strong>STIIM</strong><span>Superfície regular, estrutura tridimensional e microesferas uniformes</span></figcaption>
       </figure>
       <p class="comparison-credit">Imagens: Dal Col V, Matte BF. <cite>Calcium hydroxyapatite biostimulators: a comparative study of biological response and particle morphology.</cite> Biomedicines. 2026;14(7):1447. DOI: <a href="https://doi.org/10.3390/biomedicines14071447" rel="nofollow noopener" target="_blank">10.3390/biomedicines14071447</a>.</p>
-      <div class="particle-distribution reveal" data-particle-distribution data-active-series="stiim">
+    </div>
+    </div>
+    <div class="container particle-distribution reveal" data-particle-distribution data-active-series="stiim">
         <div class="particle-distribution-copy">
           <p class="eyebrow">Tecnologia de 3ª geração</p>
           <h3>Regularidade também na distribuição</h3>
@@ -263,7 +271,6 @@
             <div><strong>Resposta</strong><span>Menor uniformidade na dispersão e no padrão de degradação.</span></div>
           </article>
         </div>
-      </div>
     </div>
   </section>
 
@@ -385,7 +392,10 @@
            A leitura da secao agora e a mesma do slide do cliente: foto + as quatro
            finalidades ao lado. Ver relatorio. -->
       <figure class="model-card application-map reveal" data-application-map>
-        <img src="assets/img/aplicacao-modelo-va.webp" alt="Modelo do material oficial de STIIM, em pé, de perfil" width="1200" height="1500" loading="lazy" />
+        <!-- 18/09 (86ah19vv5): reenquadrada a partir da MESMA foto do VA (pag. 6, raster de 2480x3508):
+             recorte 1680x2100 em x=800 y=165, 4:5, centrado no conjunto modelo + lettering, com a
+             cabeca inteira e folga acima. O recorte anterior (y=300) cortava o cabelo. -->
+        <img src="assets/img/aplicacao-modelo-va-v2.webp" alt="Modelo do material oficial de STIIM, de perfil" width="1200" height="1500" loading="lazy" />
       </figure>
       <div class="application-copy reveal">
         <p class="eyebrow"><span class="brand-dot"></span> Aplicação e versatilidade</p>
@@ -412,7 +422,8 @@
       <article class="patient-profile reveal">
         <p class="eyebrow"><span class="brand-dot"></span> Personalização do tratamento</p>
         <h3>Naturalidade para diferentes <em>tempos da pele</em></h3>
-        <p>De pacientes jovens a peles maduras, STIIM acompanha estratégias de prevenção, restauração e manutenção com diluições personalizadas para cada objetivo, sem abrir mão da qualidade da pele.</p>
+        <!-- 18/09 (86ah19vv5): paragrafo e negritos exatamente como o PDF da Mari (pag. 8). -->
+        <p>Cada pele apresenta necessidades e objetivos distintos. STIIM permite <b>estratégias personalizadas</b>, com <b>diferentes diluições e abordagens</b>, acompanhando o momento da pele e <b>priorizando resultados naturais</b>, <b>progressivos</b> e a <b>qualidade tecidual.</b></p>
         <strong class="patient-profile-pillars">Prevenção · Restauração · Manutenção</strong>
       </article>
       <div class="concentration-panel reveal">
