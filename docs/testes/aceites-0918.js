@@ -159,29 +159,23 @@ function contrast(a,b){const l1=lum(a),l2=lum(b);return (Math.max(l1,l2)+.05)/(M
       ok(w,'MOL esfera nao cobre o texto do painel',ovl.sphereL>=ovl.textR,`esferaL=${ovl.sphereL.toFixed(0)} textoR=${ovl.textR.toFixed(0)}`);
     }
 
-    // ---- 6. Modelo: cabeca inteira com folga, sem esticar ----
+    // ---- 6. Modelo: foto inteira (sem cover), cabeca com folga, lettering inteiro, card centrado ----
     await p.evaluate(()=>document.querySelector('.model-card img').scrollIntoView({block:'center'}));
     await p.waitForFunction(()=>{const i=document.querySelector('.model-card img');return i.complete&&i.naturalWidth>0},null,{timeout:8000}).catch(()=>{});
     const mod=await p.evaluate(()=>{
       const img=document.querySelector('.model-card img'),card=document.querySelector('.model-card');
       const r=img.getBoundingClientRect(),c=card.getBoundingClientRect();
-      const cs=getComputedStyle(img);
-      // com object-fit:cover, a area visivel da imagem: escala = max(boxW/natW, boxH/natH)
-      const s=Math.max(r.width/img.naturalWidth,r.height/img.naturalHeight);
-      const visH=r.height/s, visW=r.width/s; // em px da imagem natural
       const copy=document.querySelector('.application-copy').getBoundingClientRect();
-      return {natW:img.naturalWidth,natH:img.naturalHeight,boxW:r.width,boxH:r.height,scale:s,visH,visW,pos:cs.objectPosition,fit:cs.objectFit,cardT:c.top,cardB:c.bottom,copyT:copy.top,copyB:copy.bottom,src:img.currentSrc.split('/').pop()};
+      return {natW:img.naturalWidth,natH:img.naturalHeight,boxW:r.width,boxH:r.height,fit:getComputedStyle(img).objectFit,cardT:c.top,cardB:c.bottom,copyT:copy.top,copyB:copy.bottom,src:img.currentSrc.split('/').pop()};
     });
-    // topo do cabelo no asset v2 = 71px de 1500 (medido no PNG). folga renderizada = 57*scale (object-position top).
-    const HAIR_TOP=71;
-    const folga=HAIR_TOP*mod.scale;
-    ok(w,'MODELO cabeca inteira com folga >= 16px acima (asset v2, object-position top)',mod.src.includes('aplicacao-modelo-va-v2')&&mod.pos.endsWith(' 0%')&&folga>=16&&mod.fit==='cover',`folga=${folga.toFixed(1)}px pos=${mod.pos} src=${mod.src}`);
-    // conteudo (modelo + lettering) no asset v2: x 375..1136 de 1200 (medido no PNG). Com
-    // object-position right, a janela visivel e [natW-visW, natW]; ela tem de conter o conteudo.
-    const winL=mod.natW-mod.visW;
-    ok(w,'MODELO sem esticar (cover) e janela visivel contem modelo + lettering',mod.fit==='cover'&&winL<=375&&mod.visW>=1,`janela=${winL.toFixed(0)}..${mod.natW} conteudo=375..1136 (visivel ${mod.visW.toFixed(0)}x${mod.visH.toFixed(0)})`);
+    // asset v3 (1000x1857): topo do cabelo em y=56, modelo x 142..950, lettering x 362..949 (medidos no PNG)
+    const HAIR_TOP=56, scale=mod.boxW/mod.natW, folga=HAIR_TOP*scale;
+    const ratioOk=Math.abs(mod.boxW/mod.boxH-mod.natW/mod.natH)<=0.005;
+    ok(w,'MODELO foto inteira, sem corte por CSS (proporcao renderizada = natural)',mod.src.includes('aplicacao-modelo-va-v3')&&ratioOk,`render=${mod.boxW.toFixed(0)}x${mod.boxH.toFixed(0)} natural=${mod.natW}x${mod.natH} src=${mod.src}`);
+    ok(w,'MODELO cabeca inteira com folga >= 16px acima',folga>=16,`folga=${folga.toFixed(1)}px`);
     if(w>780){
-      ok(w,'MODELO bloco da imagem com a altura da coluna de texto (tol 2px)',Math.abs(mod.cardT-mod.copyT)<=2&&Math.abs(mod.cardB-mod.copyB)<=2,`card=${mod.cardT.toFixed(0)}..${mod.cardB.toFixed(0)} texto=${mod.copyT.toFixed(0)}..${mod.copyB.toFixed(0)}`);
+      const cc=(mod.cardT+mod.cardB)/2, tc=(mod.copyT+mod.copyB)/2;
+      ok(w,'MODELO card e coluna de texto centrados entre si (tol 2px)',Math.abs(cc-tc)<=2,`card=${mod.cardT.toFixed(0)}..${mod.cardB.toFixed(0)} texto=${mod.copyT.toFixed(0)}..${mod.copyB.toFixed(0)}`);
     }
 
     // ---- 7. Naturalidade: texto exato, alinhado a esquerda, coluna ocupa a altura ----

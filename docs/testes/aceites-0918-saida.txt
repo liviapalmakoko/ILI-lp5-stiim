@@ -27,9 +27,9 @@
 1440  PASSA  MOL centro da esfera = centro do circulo, estado 2 (tol 2px)  dx=0.00 dy=0.00 raios-aro=0.00 molW=286.0000305175781
 1440  PASSA  MOL centro da esfera = centro do circulo, estado 3 (tol 2px)  dx=0.00 dy=0.00 raios-aro=0.00 molW=286.0000305175781
 1440  PASSA  MOL esfera nao cobre o texto do painel  esferaL=538 textoR=506
-1440  PASSA  MODELO cabeca inteira com folga >= 16px acima (asset v2, object-position top)  folga=31.3px pos=100% 0% src=aplicacao-modelo-va-v2.webp
-1440  PASSA  MODELO sem esticar (cover) e janela visivel contem modelo + lettering  janela=0..1200 conteudo=375..1136 (visivel 1200x1500)
-1440  PASSA  MODELO bloco da imagem com a altura da coluna de texto (tol 2px)  card=3359..4021 texto=3359..4021
+1440  PASSA  MODELO foto inteira, sem corte por CSS (proporcao renderizada = natural)  render=378x702 natural=1000x1857 src=aplicacao-modelo-va-v3.webp
+1440  PASSA  MODELO cabeca inteira com folga >= 16px acima  folga=21.2px
+1440  PASSA  MODELO card e coluna de texto centrados entre si (tol 2px)  card=3360..4062 texto=3381..4041
 1440  PASSA  NAT paragrafo exato do PDF (negritos)  
 1440  PASSA  NAT alinhado a esquerda, negrito 700, pilares mantidos  align=start b=700,700,700,700,700 pilares=Prevenção · Restauração · Manutenção
 1440  PASSA  NAT pilares "Prevenção · Restauração · Manutenção"  Prevenção · Restauração · Manutenção
@@ -66,9 +66,9 @@
 1280  PASSA  MOL centro da esfera = centro do circulo, estado 2 (tol 2px)  dx=0.00 dy=0.00 raios-aro=0.00 molW=286.0000305175781
 1280  PASSA  MOL centro da esfera = centro do circulo, estado 3 (tol 2px)  dx=0.00 dy=0.00 raios-aro=0.00 molW=286.0000305175781
 1280  PASSA  MOL esfera nao cobre o texto do painel  esferaL=458 textoR=426
-1280  PASSA  MODELO cabeca inteira com folga >= 16px acima (asset v2, object-position top)  folga=31.3px pos=100% 0% src=aplicacao-modelo-va-v2.webp
-1280  PASSA  MODELO sem esticar (cover) e janela visivel contem modelo + lettering  janela=0..1200 conteudo=375..1136 (visivel 1200x1500)
-1280  PASSA  MODELO bloco da imagem com a altura da coluna de texto (tol 2px)  card=119..781 texto=119..781
+1280  PASSA  MODELO foto inteira, sem corte por CSS (proporcao renderizada = natural)  render=378x702 natural=1000x1857 src=aplicacao-modelo-va-v3.webp
+1280  PASSA  MODELO cabeca inteira com folga >= 16px acima  folga=21.2px
+1280  PASSA  MODELO card e coluna de texto centrados entre si (tol 2px)  card=3315..4018 texto=3342..3991
 1280  PASSA  NAT paragrafo exato do PDF (negritos)  
 1280  PASSA  NAT alinhado a esquerda, negrito 700, pilares mantidos  align=start b=700,700,700,700,700 pilares=Prevenção · Restauração · Manutenção
 1280  PASSA  NAT pilares "Prevenção · Restauração · Manutenção"  Prevenção · Restauração · Manutenção
@@ -105,9 +105,9 @@
 1024  PASSA  MOL centro da esfera = centro do circulo, estado 2 (tol 2px)  dx=0.00 dy=0.00 raios-aro=0.00 molW=286.0000305175781
 1024  PASSA  MOL centro da esfera = centro do circulo, estado 3 (tol 2px)  dx=0.00 dy=0.00 raios-aro=0.00 molW=286.0000305175781
 1024  PASSA  MOL esfera nao cobre o texto do painel  esferaL=344 textoR=312
-1024  PASSA  MODELO cabeca inteira com folga >= 16px acima (asset v2, object-position top)  folga=32.9px pos=100% 0% src=aplicacao-modelo-va-v2.webp
-1024  PASSA  MODELO sem esticar (cover) e janela visivel contem modelo + lettering  janela=266..1200 conteudo=375..1136 (visivel 934x1500)
-1024  PASSA  MODELO bloco da imagem com a altura da coluna de texto (tol 2px)  card=3558..4252 texto=3558..4252
+1024  PASSA  MODELO foto inteira, sem corte por CSS (proporcao renderizada = natural)  render=309x573 natural=1000x1857 src=aplicacao-modelo-va-v3.webp
+1024  PASSA  MODELO cabeca inteira com folga >= 16px acima  folga=17.3px
+1024  PASSA  MODELO card e coluna de texto centrados entre si (tol 2px)  card=3290..3863 texto=3260..3893
 1024  PASSA  NAT paragrafo exato do PDF (negritos)  
 1024  PASSA  NAT alinhado a esquerda, negrito 700, pilares mantidos  align=start b=700,700,700,700,700 pilares=Prevenção · Restauração · Manutenção
 1024  PASSA  NAT pilares "Prevenção · Restauração · Manutenção"  Prevenção · Restauração · Manutenção
@@ -134,8 +134,8 @@
  768  PASSA  MOL centro da esfera = centro do circulo, estado 1 (tol 2px)  dx=0.00 dy=0.00 raios-aro=0.00 molW=208
  768  PASSA  MOL centro da esfera = centro do circulo, estado 2 (tol 2px)  dx=0.00 dy=0.00 raios-aro=0.00 molW=208
  768  PASSA  MOL centro da esfera = centro do circulo, estado 3 (tol 2px)  dx=0.00 dy=0.00 raios-aro=0.00 molW=208
- 768  PASSA  MODELO cabeca inteira com folga >= 16px acima (asset v2, object-position top)  folga=30.8px pos=100% 0% src=aplicacao-modelo-va-v2.webp
- 768  PASSA  MODELO sem esticar (cover) e janela visivel contem modelo + lettering  janela=0..1200 conteudo=375..1136 (visivel 1200x1500)
+ 768  PASSA  MODELO foto inteira, sem corte por CSS (proporcao renderizada = natural)  render=400x743 natural=1000x1857 src=aplicacao-modelo-va-v3.webp
+ 768  PASSA  MODELO cabeca inteira com folga >= 16px acima  folga=22.4px
  768  PASSA  NAT paragrafo exato do PDF (negritos)  
  768  PASSA  NAT alinhado a esquerda, negrito 700, pilares mantidos  align=start b=700,700,700,700,700 pilares=Prevenção · Restauração · Manutenção
  768  PASSA  NAT pilares "Prevenção · Restauração · Manutenção"  Prevenção · Restauração · Manutenção
@@ -160,8 +160,8 @@
  390  PASSA  MOL centro da esfera = centro do circulo, estado 1 (tol 2px)  dx=-0.00 dy=0.00 raios-aro=0.00 molW=186
  390  PASSA  MOL centro da esfera = centro do circulo, estado 2 (tol 2px)  dx=-0.00 dy=0.00 raios-aro=0.00 molW=186
  390  PASSA  MOL centro da esfera = centro do circulo, estado 3 (tol 2px)  dx=-0.00 dy=0.00 raios-aro=0.00 molW=186
- 390  PASSA  MODELO cabeca inteira com folga >= 16px acima (asset v2, object-position top)  folga=21.2px pos=100% 0% src=aplicacao-modelo-va-v2.webp
- 390  PASSA  MODELO sem esticar (cover) e janela visivel contem modelo + lettering  janela=0..1200 conteudo=375..1136 (visivel 1200x1500)
+ 390  PASSA  MODELO foto inteira, sem corte por CSS (proporcao renderizada = natural)  render=358x665 natural=1000x1857 src=aplicacao-modelo-va-v3.webp
+ 390  PASSA  MODELO cabeca inteira com folga >= 16px acima  folga=20.0px
  390  PASSA  NAT paragrafo exato do PDF (negritos)  
  390  PASSA  NAT alinhado a esquerda, negrito 700, pilares mantidos  align=start b=700,700,700,700,700 pilares=Prevenção · Restauração · Manutenção
  390  PASSA  NAT pilares "Prevenção · Restauração · Manutenção"  Prevenção · Restauração · Manutenção
@@ -186,8 +186,8 @@
  360  PASSA  MOL centro da esfera = centro do circulo, estado 1 (tol 2px)  dx=-0.00 dy=0.00 raios-aro=0.00 molW=186
  360  PASSA  MOL centro da esfera = centro do circulo, estado 2 (tol 2px)  dx=-0.00 dy=0.00 raios-aro=0.00 molW=186
  360  PASSA  MOL centro da esfera = centro do circulo, estado 3 (tol 2px)  dx=-0.00 dy=0.00 raios-aro=0.00 molW=186
- 360  PASSA  MODELO cabeca inteira com folga >= 16px acima (asset v2, object-position top)  folga=19.4px pos=100% 0% src=aplicacao-modelo-va-v2.webp
- 360  PASSA  MODELO sem esticar (cover) e janela visivel contem modelo + lettering  janela=0..1200 conteudo=375..1136 (visivel 1200x1500)
+ 360  PASSA  MODELO foto inteira, sem corte por CSS (proporcao renderizada = natural)  render=328x609 natural=1000x1857 src=aplicacao-modelo-va-v3.webp
+ 360  PASSA  MODELO cabeca inteira com folga >= 16px acima  folga=18.4px
  360  PASSA  NAT paragrafo exato do PDF (negritos)  
  360  PASSA  NAT alinhado a esquerda, negrito 700, pilares mantidos  align=start b=700,700,700,700,700 pilares=Prevenção · Restauração · Manutenção
  360  PASSA  NAT pilares "Prevenção · Restauração · Manutenção"  Prevenção · Restauração · Manutenção
