@@ -159,20 +159,19 @@ function contrast(a,b){const l1=lum(a),l2=lum(b);return (Math.max(l1,l2)+.05)/(M
       ok(w,'MOL esfera nao cobre o texto do painel',ovl.sphereL>=ovl.textR,`esferaL=${ovl.sphereL.toFixed(0)} textoR=${ovl.textR.toFixed(0)}`);
     }
 
-    // ---- 6. Modelo: foto inteira (sem cover), cabeca com folga, lettering inteiro, card centrado ----
-    await p.evaluate(()=>document.querySelector('.model-card img').scrollIntoView({block:'center'}));
-    await p.waitForFunction(()=>{const i=document.querySelector('.model-card img');return i.complete&&i.naturalWidth>0},null,{timeout:8000}).catch(()=>{});
+    // ---- 6. Modelo (21/09: tres camadas; os aceites a-d detalhados estao em modelo-aceites.py) ----
+    await p.evaluate(()=>document.querySelector('.model-card').scrollIntoView({block:'center'}));
+    await p.waitForFunction(()=>[...document.querySelectorAll('.model-card img')].every(i=>i.complete&&i.naturalWidth>0),null,{timeout:8000}).catch(()=>{});
     const mod=await p.evaluate(()=>{
-      const img=document.querySelector('.model-card img'),card=document.querySelector('.model-card');
-      const r=img.getBoundingClientRect(),c=card.getBoundingClientRect();
-      const copy=document.querySelector('.application-copy').getBoundingClientRect();
-      return {natW:img.naturalWidth,natH:img.naturalHeight,boxW:r.width,boxH:r.height,fit:getComputedStyle(img).objectFit,cardT:c.top,cardB:c.bottom,copyT:copy.top,copyB:copy.bottom,src:img.currentSrc.split('/').pop()};
+      const card=document.querySelector('.model-card').getBoundingClientRect(),copy=document.querySelector('.application-copy').getBoundingClientRect();
+      const model=document.querySelector('.model-card-model'),word=document.querySelector('.model-card-word');
+      const mr=model.getBoundingClientRect(),cs=getComputedStyle(document.querySelector('.model-card'));
+      return {cardT:card.top,cardB:card.bottom,cardW:card.width,cardH:card.height,copyT:copy.top,copyB:copy.bottom,modelTop:mr.top,modelW:mr.width,natW:model.naturalWidth,wordOk:!!word&&word.naturalWidth>0,src:model.currentSrc.split('/').pop(),cx:parseFloat(cs.getPropertyValue('--model-cx')),axis:mr.left+mr.width*parseFloat(cs.getPropertyValue('--model-cx'))-card.left};
     });
-    // asset v3 (1000x1857): topo do cabelo em y=56, modelo x 142..950, lettering x 362..949 (medidos no PNG)
-    const HAIR_TOP=56, scale=mod.boxW/mod.natW, folga=HAIR_TOP*scale;
-    const ratioOk=Math.abs(mod.boxW/mod.boxH-mod.natW/mod.natH)<=0.005;
-    ok(w,'MODELO foto inteira, sem corte por CSS (proporcao renderizada = natural)',mod.src.includes('aplicacao-modelo-va-v3')&&ratioOk,`render=${mod.boxW.toFixed(0)}x${mod.boxH.toFixed(0)} natural=${mod.natW}x${mod.natH} src=${mod.src}`);
-    ok(w,'MODELO cabeca inteira com folga >= 16px acima',folga>=16,`folga=${folga.toFixed(1)}px`);
+    ok(w,'MODELO tres camadas carregadas (recorte com alfa + palavra STIIM)',mod.src.includes('aplicacao-modelo-recorte')&&mod.wordOk&&mod.cardH>100,`src=${mod.src} card=${mod.cardW.toFixed(0)}x${mod.cardH.toFixed(0)}`);
+    ok(w,'MODELO cabeca inteira com folga >= 16px acima',mod.modelTop-mod.cardT>=16,`folga=${(mod.modelTop-mod.cardT).toFixed(1)}px`);
+    ok(w,'MODELO eixo do tronco a <= 5% do centro do card',Math.abs(mod.axis-mod.cardW/2)/mod.cardW<=0.05,`desvio=${(100*Math.abs(mod.axis-mod.cardW/2)/mod.cardW).toFixed(1)}%`);
+    ok(w,'MODELO sem ampliacao (render x2 <= natural)',mod.modelW*2<=mod.natW+0.5,`render=${mod.modelW.toFixed(0)} natural=${mod.natW}`);
     if(w>780){
       const cc=(mod.cardT+mod.cardB)/2, tc=(mod.copyT+mod.copyB)/2;
       ok(w,'MODELO card e coluna de texto centrados entre si (tol 2px)',Math.abs(cc-tc)<=2,`card=${mod.cardT.toFixed(0)}..${mod.cardB.toFixed(0)} texto=${mod.copyT.toFixed(0)}..${mod.copyB.toFixed(0)}`);
