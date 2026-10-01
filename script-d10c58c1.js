@@ -482,9 +482,26 @@
     }
   }
 
-  /* Formulário RD Station. Falhas não são mais exibidas como sucesso. */
-  var RD_TOKEN = '61d98fcb65995325460b68f98e0995fe';
+  /* Formulário RD Station. Falhas não são mais exibidas como sucesso.
+     30/09/2026: saiu o endpoint legado www.rdstation.com.br/api/1.3/conversions e entrou a
+     Conversions API atual (api.rd.services), no mesmo padrão das LPs irmãs (Pluryal, Nano,
+     UP Full). O envelope muda (CONVERSION/CDP com o lead em .payload) e os nomes também:
+     nome/telefone/cidade/estado/identificador viram name/mobile_phone/city/state/
+     conversion_identifier. Os dois formatos não são intercambiáveis. */
+  var RD_TOKEN = '61d98fcb65995325460b68f98e0995fe'; // conta ILIKIA, comum às LPs
   var FORM_ID = 'lp-stiim';
+  var RD_ENDPOINT = 'https://api.rd.services/platform/conversions?api_key=' + RD_TOKEN;
+  // cf_especialidade é lista FECHADA no RD: valor fora dela derruba a conversão inteira
+  // com 400 (o lead se perde). As opções do select já são os nomes da lista; o mapa é a
+  // trava para quando alguém acrescentar uma opção sem mexer aqui -- cai em "Outro".
+  var ESPECIALIDADE_RD = {
+    'Dermatologista': 'Dermatologista',
+    'Cirurgião Plástico': 'Cirurgião Plástico',
+    'Biomédico': 'Biomédico',
+    'Farmacêutico': 'Farmacêutico',
+    'Cirurgião Dentista': 'Cirurgião Dentista'
+  };
+  function slugify(v) { return String(v || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); }
   var form = document.getElementById('leadForm');
   var success = document.getElementById('formSuccess');
   var formError = document.getElementById('formError');
@@ -508,25 +525,39 @@
       submitButton.textContent = 'Enviando...';
 
       var data = new FormData(form);
-      var payload = {
-        token_rdstation: RD_TOKEN,
-        identificador: FORM_ID,
-        nome: data.get('nome'),
-        email: data.get('email'),
-        telefone: data.get('telefone'),
-        cf_cpf_cnpj: data.get('cpf_cnpj') || '',
-        cf_numero_do_registro: data.get('registro'),
-        cf_especialidade: data.get('especialidade'),
-        cidade: data.get('cidade'),
-        estado: data.get('estado')
+      var utm = getUtmData();
+      var especialidade = String(data.get('especialidade') || '');
+      var estado = String(data.get('estado') || '');
+      var registro = String(data.get('registro') || '').trim();
+      var lead = {
+        conversion_identifier: FORM_ID,
+        name: String(data.get('nome') || '').trim(),
+        email: String(data.get('email') || '').trim(),
+        mobile_phone: '+55' + String(data.get('telefone') || '').replace(/\D/g, ''),
+        city: String(data.get('cidade') || '').trim(),
+        state: estado,
+        // Na conta ILIKIA o registro profissional é cf_numero_do_conselho_regional; cf_crm
+        // também existe e vai junto. Nome de campo errado o RD descarta em silêncio.
+        cf_crm: registro,
+        cf_numero_do_conselho_regional: registro,
+        cf_cpf_cnpj: String(data.get('cpf_cnpj') || '').replace(/\D/g, ''),
+        // Padrão de tags das LPs ILIKIA: <marca>-landing + lp-koko (a mídia separa no RD
+        // o que veio das nossas LPs por lp-koko) + recortes.
+        tags: ['stiim-landing', 'ilikia', 'lp-koko', 'especialidade-' + slugify(especialidade), 'estado-' + slugify(estado)],
+        traffic_source: utm.utm_source || document.referrer || '',
+        traffic_medium: utm.utm_medium || '',
+        traffic_campaign: utm.utm_campaign || '',
+        traffic_value: utm.utm_content || '',
+        utm_source: utm.utm_source || '', utm_medium: utm.utm_medium || '', utm_campaign: utm.utm_campaign || '',
+        utm_term: utm.utm_term || '', utm_content: utm.utm_content || '',
+        conversion_url: window.location.href
       };
+      if (especialidade) lead.cf_especialidade = ESPECIALIDADE_RD[especialidade] || 'Outro';
+      var payload = { event_type: 'CONVERSION', event_family: 'CDP', payload: lead };
 
-      var utmData = getUtmData();
-      Object.keys(utmData).forEach(function (key) { payload[key] = utmData[key]; });
-
-      fetch('https://www.rdstation.com.br/api/1.3/conversions', {
+      fetch(RD_ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(payload)
       }).then(function (response) {
         if (!response.ok) throw new Error('Falha no envio');
