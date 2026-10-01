@@ -6,6 +6,9 @@
 1440  PASSA  FORM sem "Receba o conteúdo técnico..."  
 1440  PASSA  FORM titulo da coluna mantido  Conheça STIIM em profundidade
 1440  PASSA  FORM ids/names intactos  leadForm nome:nome,email:email,tel:telefone,doc:cpf_cnpj,reg:registro
+1440  PASSA  FORM envia para api.rd.services (Conversions API), nao para o endpoint legado  https://api.rd.services/platform/conversions?api_key=***
+1440  PASSA  FORM envelope CONVERSION/CDP com lead em .payload  {"t":"CONVERSION","f":"CDP","id":"lp-stiim","esp":"Dermatologista"}
+1440  PASSA  FORM mostra o estado de sucesso  
 1280  PASSA  HERO sem anel dourado (borda 0 no .hero::before)  borda=0px none
 1280  PASSA  HERO brilho radial mantido  radial-gradient(circle, rgba(255, 255, 2
 1280  PASSA  FORM sem eyebrow "Acesso profissional"  eyebrows=0
@@ -47,4 +50,4 @@
  360  PASSA  FORM titulo da coluna mantido  Conheça STIIM em profundidade
  360  PASSA  FORM ids/names intactos  leadForm nome:nome,email:email,tel:telefone,doc:cpf_cnpj,reg:registro
 
-TOTAL: 48 medicoes, 0 FALHA(S)
+TOTAL: 51 medicoes, 0 FALHA(S)
