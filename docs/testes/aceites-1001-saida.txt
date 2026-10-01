@@ -1,0 +1,50 @@
+1440  PASSA  HERO sem anel dourado (borda 0 no .hero::before)  borda=0px none
+1440  PASSA  HERO brilho radial mantido  radial-gradient(circle, rgba(255, 255, 2
+1440  PASSA  FORM sem eyebrow "Acesso profissional"  eyebrows=0
+1440  PASSA  FORM sem "STIIM × ILIKIA"  
+1440  PASSA  FORM cabecalho = so "Fale com os nossos consultores"  H3:Fale com os nossos consultores
+1440  PASSA  FORM sem "Receba o conteúdo técnico..."  
+1440  PASSA  FORM titulo da coluna mantido  Conheça STIIM em profundidade
+1440  PASSA  FORM ids/names intactos  leadForm nome:nome,email:email,tel:telefone,doc:cpf_cnpj,reg:registro
+1280  PASSA  HERO sem anel dourado (borda 0 no .hero::before)  borda=0px none
+1280  PASSA  HERO brilho radial mantido  radial-gradient(circle, rgba(255, 255, 2
+1280  PASSA  FORM sem eyebrow "Acesso profissional"  eyebrows=0
+1280  PASSA  FORM sem "STIIM × ILIKIA"  
+1280  PASSA  FORM cabecalho = so "Fale com os nossos consultores"  H3:Fale com os nossos consultores
+1280  PASSA  FORM sem "Receba o conteúdo técnico..."  
+1280  PASSA  FORM titulo da coluna mantido  Conheça STIIM em profundidade
+1280  PASSA  FORM ids/names intactos  leadForm nome:nome,email:email,tel:telefone,doc:cpf_cnpj,reg:registro
+1024  PASSA  HERO sem anel dourado (borda 0 no .hero::before)  borda=0px none
+1024  PASSA  HERO brilho radial mantido  radial-gradient(circle, rgba(255, 255, 2
+1024  PASSA  FORM sem eyebrow "Acesso profissional"  eyebrows=0
+1024  PASSA  FORM sem "STIIM × ILIKIA"  
+1024  PASSA  FORM cabecalho = so "Fale com os nossos consultores"  H3:Fale com os nossos consultores
+1024  PASSA  FORM sem "Receba o conteúdo técnico..."  
+1024  PASSA  FORM titulo da coluna mantido  Conheça STIIM em profundidade
+1024  PASSA  FORM ids/names intactos  leadForm nome:nome,email:email,tel:telefone,doc:cpf_cnpj,reg:registro
+ 768  PASSA  HERO sem anel dourado (borda 0 no .hero::before)  borda=0px none
+ 768  PASSA  HERO brilho radial mantido  radial-gradient(circle, rgba(255, 255, 2
+ 768  PASSA  FORM sem eyebrow "Acesso profissional"  eyebrows=0
+ 768  PASSA  FORM sem "STIIM × ILIKIA"  
+ 768  PASSA  FORM cabecalho = so "Fale com os nossos consultores"  H3:Fale com os nossos consultores
+ 768  PASSA  FORM sem "Receba o conteúdo técnico..."  
+ 768  PASSA  FORM titulo da coluna mantido  Conheça STIIM em profundidade
+ 768  PASSA  FORM ids/names intactos  leadForm nome:nome,email:email,tel:telefone,doc:cpf_cnpj,reg:registro
+ 390  PASSA  HERO sem anel dourado (borda 0 no .hero::before)  borda=0px none
+ 390  PASSA  HERO brilho radial mantido  radial-gradient(circle, rgba(255, 255, 2
+ 390  PASSA  FORM sem eyebrow "Acesso profissional"  eyebrows=0
+ 390  PASSA  FORM sem "STIIM × ILIKIA"  
+ 390  PASSA  FORM cabecalho = so "Fale com os nossos consultores"  H3:Fale com os nossos consultores
+ 390  PASSA  FORM sem "Receba o conteúdo técnico..."  
+ 390  PASSA  FORM titulo da coluna mantido  Conheça STIIM em profundidade
+ 390  PASSA  FORM ids/names intactos  leadForm nome:nome,email:email,tel:telefone,doc:cpf_cnpj,reg:registro
+ 360  PASSA  HERO sem anel dourado (borda 0 no .hero::before)  borda=0px none
+ 360  PASSA  HERO brilho radial mantido  radial-gradient(circle, rgba(255, 255, 2
+ 360  PASSA  FORM sem eyebrow "Acesso profissional"  eyebrows=0
+ 360  PASSA  FORM sem "STIIM × ILIKIA"  
+ 360  PASSA  FORM cabecalho = so "Fale com os nossos consultores"  H3:Fale com os nossos consultores
+ 360  PASSA  FORM sem "Receba o conteúdo técnico..."  
+ 360  PASSA  FORM titulo da coluna mantido  Conheça STIIM em profundidade
+ 360  PASSA  FORM ids/names intactos  leadForm nome:nome,email:email,tel:telefone,doc:cpf_cnpj,reg:registro
+
+TOTAL: 48 medicoes, 0 FALHA(S)
